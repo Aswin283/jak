@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <title>JAK PORTAL</title> 
+    <script type="text/javascript">
+        function preventBack(){window.history.forward()};
+        setTimeout("preventBack()", 0);
+        window.onunload=function(){null;}
+    </script>
+
+</head>
+<style>
+  .avatar-upload {
+    position: relative;
+    max-width: 205px;
+    margin: 50px auto;
+  }
+  .avatar-upload .avatar-edit {
+    position: absolute;
+    right: 12px;
+    z-index: 1;
+    top: 10px;
+  }
+  .avatar-upload .avatar-edit input {
+    display: none;
+  }
+
+  .avatar-upload .avatar-preview {
+    width: 200px;
+    height: 250px;
+    position: relative;
+    border-radius: 100%;
+    border: 6px solid #F8F8F8;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+  }
+  .avatar-upload .avatar-preview > div {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+.opt{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.buttons{
+    display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.opt1{
+  justify-content: space-between;
+  align-items: center;
+}
+table.center {
+            margin-left: auto;
+            margin-right: auto;
+            width: 60%; /* Make sure the table takes up full width */
+        }
+
+        th, td {
+            padding: 1em 1em;
+            text-align: justify;
+        }
+
+        th {
+            background-color: #0b3cc1;
+            color: #fff;
+        }
+
+        td {
+            border-top: 1px solid var(--panel-color);
+            color: var(--text-color);
+            background-color: var(--table-color);
+            font-weight: 400;
+        }
+
+        th.missed-col {
+            background-color: #3bbc4a;
+        }
+
+        td.missed-col {
+            background-color: #ecfff4;
+            color: rgb(4, 255, 0);
+        }
+
+        /* Apply different styles for smaller screens */
+        @media only screen and (max-width: 600px) {
+            th, td {
+                padding: 0.5em 0.5em;
+            }
+
+        }
+@media(max-width:750px)
+{
+    .opt{
+        flex-direction: column;
+    }
+}
+input[type="number"] {
+    height: 100%;
+    width: 90%;
+    padding: 0 20px;
+    outline: none;
+    font-size: 14px;
+    gap: 10px;
+    font-weight: 400;
+    color: rgb(4, 255, 0);
+    border: none;
+    background-color: transparent;
+  }
+
+  button {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 500;
+  line-height: 1;
+  padding: 1em 1.5em;
+  position: relative;
+  background-color: #0b3cc1;
+  }
+.butt{
+    justify-content: space-between;
+  align-items: center;
+}
+td a{
+    color: var(--text-color);
+    font-weight: 600;
+    text-decoration: none;
+}
+th.subb{
+    background-color: transparent;
+    color: var(--text-color);
+    padding: 1.2em 1em;
+    max-width: 700px;
+    text-align: center;
+}
+#student-search{
+    height: 100%;
+    width: 50%;
+    padding: 0 20px;
+    outline: none;
+    font-size: 14px;
+    gap: 10px;
+    font-weight: 500;
+    color: var(--text-color);
+    border: none;
+    background-color: transparent;
+    box-shadow:rgba(255, 255, 255, 0.558);
+}
+  </style>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="/static/Images/logo.png" alt="">
+            </div>
+        </div>
+        <div class="menu-items">
+            <ul class="nav-links">
+                {% if session['data']|length==2 %}
+                <ul class="nav-links">
+                    <li><a href="{{url_for('createClass')}}">
+                        <i class='bx bx-book-add'></i>
+                        <span class="link-name">Create Class</span>
+                    </a></li>
+                    <li><a href="{{url_for('assignSubjects')}}">
+                        <i class="uil uil-files-landscapes"></i>
+                        <span class="link-name">Subject Names</span>
+                    </a></li>
+                    <li><a href="{{url_for('staffDetails')}}">
+                        <i class='bx bx-user-plus'></i>
+                        <span class="link-name">Staff Details</span>
+                    </a></li>
+                    <li><a href="{{url_for('assignCounsellors')}}">
+                        <i class='bx bx-user-voice'></i>
+                        <span class="link-name">Assign Counsellors</span>
+                    </a></li>
+                    <li><a href="{{url_for('announcements')}}">
+                        <i class='bx bx-alarm-exclamation'></i>
+                        <span class="link-name">Post Announcements</span>
+                    </a></li>
+                    <li><a href="{{url_for('staffAttendance')}}">
+                        <i class='bx bx-bar-chart-alt-2'></i>
+                        <span class="link-name">Attendance</span>
+                    </a></li>
+                    <li><a href="{{url_for('adminInternal')}}">
+                        <i class='bx bx-bar-chart-alt-2'></i>
+                        <span class="link-name">Internal Marks</span>
+                    </a></li>
+    
+                    <li><a href="{{url_for('leaveHistory')}}">
+                        <i class='bx bxs-book-content'></i>
+                        <span class="link-name">Leave History</span>
+                    </a></li>
+                    <li><a href="{{url_for('searchStudent')}}">
+                        <i class='bx bx-street-view'></i>
+                        <span class="link-name">Search Student</span>
+                    </a></li>
+    
+                    <li><a href="{{url_for('adminSettings')}}">
+                        <i class='bx bx-customize'></i>
+                        <span class="link-name">Settings</span>
+                    </a></li>
+                    <li><a href="{{url_for('index')}}">
+                        <i class="uil uil-signout"></i>
+                        <span class="link-name">Logout</span>
+                    </a></li>
+    
+{% else %}    
+                <li><a href="{{url_for('staffProfile')}}">
+                    <i class="uil uil-estate"></i>
+                    <span class="link-name">Profile</span>
+                </a>
+                <span class="tooltip">Profile</span></li>
+                <li><a href="{{url_for('staffMaterials')}}">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="link-name">Digital Materials</span>
+                </a></li>
+                <li><a href="{{url_for('staffInternalMarks')}}">
+                    <i class="uil uil-chart"></i>
+                    <span class="link-name">Internal Marks</span>
+                </a></li>
+                <li><a href="{{url_for('announcements')}}">
+                    <i class='bx bx-alarm-exclamation'></i>
+                    <span class="link-name">Post Announcements</span>
+                </a></li>
+
+                {% if session['data'][-1]=='yes' %}
+
+                <li><a href="{{url_for('staffAttendance')}}">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span class="link-name">Attendance</span>
+                </a></li>
+                <li><a href="{{url_for('staffLeaveLetters')}}">
+                    <i class="uil uil-comments"></i>
+                    <span class="link-name">Leave Requests</span>
+                </a></li>
+                <li><a href="{{url_for('leaveHistory')}}">
+                    <i class='bx bxs-book-content'></i>
+                    <span class="link-name">Leave History</span>
+                </a></li>
+
+                <li><a href="{{url_for('papers')}}">
+                    <i class='bx bx-copy-alt'></i>
+                    <span class="link-name">Papers</span>
+                </a></li>
+
+                <li><a href="{{url_for('searchStudent')}}">
+                    <i class='bx bx-street-view'></i>
+                    <span class="link-name">Search Student</span>
+                </a></li>
+                {% endif %}
+
+                <li><a href="{{url_for('staffSettings')}}">
+                    <i class='bx bx-customize'></i>
+                    <span class="link-name">Settings</span>
+                </a></li>
+                <li><a href="{{url_for('index')}}">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Logout</span>
+                </a></li>
+             
+                {%endif%}
+                
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                        <div class="mode-toggle">
+                            <span class="switch"></span>
+                          </div>
+                </a>
+
+
+            </li>
+</ul>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+
+            <div class="name">
+                JAK PORTAL
+                <div class="subname">
+                    An AIML Department ERP Portal
+                </div> 
+            </div>
+            <img id="image" src="/static/Images/logomain.png" alt="">
+        </div>
+
+        <div class="dash-content">
+            <div class="overview">
+                <div class="title">
+                    <i class='bx bx-street-view'></i>
+                    <span class="text">View Student</span>
+                </div>
+            </div>
+            <center>
+            <div class="search-container">
+                <input type="text" id="student-search" placeholder="Search by RollNo or Name">
+                <button id="search-button">Search</button>
+            </div>
+        </center>
+            <br>      
+            {% for studentsData in range (totalStudentsData|length) %}
+            <table class="center">
+                <thead>
+                    <tr>
+                        <th class="subb" colspan="2">{{classes[studentsData]}}</th>
+                    </tr>
+                    <tr>
+                        <th>Register Number</th>
+                        <th>Student Name</th>                        
+                    </tr>
+                </thead>
+                
+                <tbody>  
+                    {% for student in totalStudentsData[studentsData] %}
+                    <tr class="student">
+                        <td class="name-col"><a href="/studentDetails/{{student[0]}}/{{classes[studentsData]}}" target="_blank">{{student[0]}}</a></td>
+                        <td class="name-col">{{student[2]}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endfor %}
+            </div>
+
+        </section>
+        <script>
+            $(document).ready(function(){
+              $('#myselection').on('change', function(){
+                var demovalue = $(this).val(); 
+                  $("div.form1").hide();
+                  $("#show"+demovalue).show();
+              });
+          });
+          $(document).ready(function() {
+    // Function to filter and display student data based on the roll number
+    $('#search-button').on('click', function() {
+        var searchTerm = $('#student-search').val().trim().toLowerCase();
+
+        // Hide all students initially
+        $('.student').hide();
+
+        if (searchTerm === '') {
+            // If the search term is empty, show all students in all tables
+            $('.student').show();
+        } else {
+            // Iterate through each student row and show the matching ones
+            $('.student').each(function() {
+                var studentRow = $(this);
+                var studentName = studentRow.find('.name-col').text().toLowerCase();
+
+                // Check if the student name contains the search term
+                if (studentName.includes(searchTerm)) {
+                    studentRow.show();
+                }
+            });
+
+            // Hide tables with no matching students
+            $('table.center').each(function() {
+                var table = $(this);
+                if (table.find('.student:visible').length === 0) {
+                    table.hide();
+                } else {
+                    table.show();
+                }
+            });
+        }
+    });
+
+    // Trigger search when Enter key is pressed in the search input field
+    $('#student-search').on('keyup', function(event) {
+        if (event.key === 'Enter') {
+            $('#search-button').click();
+        }
+    });
+});
+
+          </script> 
+        
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </body>
+</html>

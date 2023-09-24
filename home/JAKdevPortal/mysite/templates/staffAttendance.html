@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>JAK PORTAL</title>
+    <script type="text/javascript">
+        function preventBack(){window.history.forward()};
+        setTimeout("preventBack()", 0);
+        window.onunload=function(){null;}
+    </script>
+
+</head>
+<style>
+
+.container {
+  margin: 0 auto;
+  max-width: 600px;
+
+  position: relative;
+  text-align: center;
+}
+
+.tss {
+  display: inline-block;
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background: var(--panel-color);
+  border-radius: 25px;
+}
+.tss input[type=radio] {
+  display: none;
+}
+.tss input[type=radio]:checked + label span:before {
+  display: inline-block;
+}
+.tss label {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  padding: 5px 10px;
+  min-width: 30px;
+}
+.tss label span:before {
+  content: "";
+  position: absolute;
+  display: none;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background: rgba(0, 54, 112, 0.5);
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.thing {
+  margin: 20px 0;
+}
+@media(max-width: 600px){
+    .tss label {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  padding: 5px 10px;
+  min-width: 30px;
+  font-size: 12px;
+}
+    .tss label span:before {
+    content: "";
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background: rgba(0, 54, 112, 0.5);
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    }
+}
+  .avatar-upload {
+    position: relative;
+    max-width: 205px;
+    margin: 50px auto;
+  }
+  .avatar-upload .avatar-edit {
+    position: absolute;
+    right: 12px;
+    z-index: 1;
+    top: 10px;
+  }
+  .avatar-upload .avatar-edit input {
+    display: none;
+  }
+
+  .avatar-upload .avatar-preview {
+    width: 200px;
+    height: 250px;
+    position: relative;
+    border-radius: 100%;
+    border: 6px solid #F8F8F8;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+  }
+  .avatar-upload .avatar-preview > div {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+.opt{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.buttons{
+    display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.opt1{
+  justify-content: space-between;
+  align-items: center;
+}
+table.center {
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%; /* Make sure the table takes up full width */
+        }
+
+        th, td {
+            padding: 0.7em 0.7em;
+            text-align: center;
+        }
+
+        th {
+            background-color: #0b3cc1;
+            color: #fff;
+        }
+
+        td {
+            border-top: 1px solid var(--panel-color);
+            color: var(--text-color);
+            background-color: var(--table-color);
+        }
+
+        th.missed-col {
+            background-color: #3bbc4a;
+        }
+
+        td.missed-col {
+            background-color: #ecfff4;
+            color: rgb(4, 255, 0);
+        }
+
+        /* Apply different styles for smaller screens */
+        @media only screen and (max-width: 600px) {
+            th, td {
+                padding: 0.5em 0.5em;
+            }
+            td.name-col {
+                font-weight: bold;
+            }
+        }
+@media(max-width:750px)
+{
+    .opt{
+        flex-direction: column;
+    }
+}
+input[type="number"] {
+    height: 100%;
+    width: 90%;
+    padding: 0 20px;
+    outline: none;
+    font-size: 14px;
+    gap: 10px;
+    font-weight: 400;
+    color: rgb(4, 255, 0);
+    border: none;
+    background-color: transparent;
+  }
+
+  button {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 500;
+  line-height: 1;
+  padding: 1em 1.5em;
+  position: relative;
+  background-color: #0b3cc1;
+  }
+.butt{
+    justify-content: space-between;
+  align-items: center;
+}
+td a{
+    color: #0b3cc1;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.button {
+  padding: 10px;
+  color: white;
+  background-color: #0b3cc1;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.dow{
+    font-weight: 600;
+    text-decoration: none;
+    color: #0b3cc1;
+}
+#successmessage1{
+    margin-top: 30px;
+    display:none;
+    background-color: rgb(19, 49, 83);
+    text-align: center;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 12px;
+}
+strong{
+    font-size: 20px;
+    color: #ffffff;
+}
+td ul li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+    gap: 15px;
+}
+td ul li span{
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+#dateSelector{
+    display: inline-block;
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25;
+    user-select: none;
+    white-space: nowrap;
+    text-align: center;
+    margin-left: auto;
+    padding: 0.65rem 1.5rem;
+    border-radius: 0.5rem;
+    color: var(--text-color);
+    background-color: var(--panel-color);
+    box-shadow: var(--shadow-medium);
+    transition: all 0.3s ease-in-out;
+}
+.select{
+    display: inline-block;
+    font-family: inherit;
+    font-size: 0.775rem;
+    font-weight: 300;
+    line-height: 1.25;
+    user-select: none;
+    white-space: nowrap;
+    text-align: center;
+    margin-left: auto;
+    padding: 0.30rem 0.45rem;
+    border-radius: 0.5rem;
+    color: var(--text-color);
+    background-color: var(--panel-color);
+    box-shadow: var(--shadow-medium);
+    transition: all 0.3s ease-in-out;
+}
+
+@media only screen and (max-width: 600px) {
+            th, td {
+                padding: 0.5em 0.5em;
+                font-size: 0.6em;
+            }
+            td.name-col {
+                font-weight: bold;
+            }
+            input[type="name"]{
+                font-size: 0.8em;
+            }
+            input[type="file"]{
+                font-size: 0.8em;
+            }
+        }
+</style>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="/static/Images/logo.png" alt="">
+            </div>
+        </div>
+        <div class="menu-items">
+            {% if session['data']|length==2 %}
+            <ul class="nav-links">
+                <li><a href="{{url_for('createClass')}}">
+                    <i class='bx bx-book-add'></i>
+                    <span class="link-name">Create Class</span>
+                </a></li>
+                <li><a href="{{url_for('assignSubjects')}}">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="link-name">Subject Names</span>
+                </a></li>
+                <li><a href="{{url_for('staffDetails')}}">
+                    <i class='bx bx-user-plus'></i>
+                    <span class="link-name">Staff Details</span>
+                </a></li>
+                <li><a href="{{url_for('assignCounsellors')}}">
+                    <i class='bx bx-user-voice'></i>
+                    <span class="link-name">Assign Counsellors</span>
+                </a></li>
+                <li><a href="{{url_for('announcements')}}">
+                    <i class='bx bx-alarm-exclamation'></i>
+                    <span class="link-name">Post Announcements</span>
+                </a></li>
+                <li><a href="{{url_for('staffAttendance')}}">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span class="link-name">Attendance</span>
+                </a></li>
+                <li><a href="{{url_for('adminInternal')}}">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span class="link-name">Internal Marks</span>
+                </a></li>
+
+                <li><a href="{{url_for('leaveHistory')}}">
+                    <i class='bx bxs-book-content'></i>
+                    <span class="link-name">Leave History</span>
+                </a></li>
+                <li><a href="{{url_for('searchStudent')}}">
+                    <i class='bx bx-street-view'></i>
+                    <span class="link-name">Search Student</span>
+                </a></li>
+
+                <li><a href="{{url_for('adminSettings')}}">
+                    <i class='bx bx-customize'></i>
+                    <span class="link-name">Settings</span>
+                </a></li>
+                <li><a href="{{url_for('index')}}">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Logout</span>
+                </a></li>
+
+                {%else%}
+
+            <ul class="nav-links">
+                <li><a href="{{url_for('staffProfile')}}">
+                    <i class="uil uil-estate"></i>
+                    <span class="link-name">Profile</span>
+                </a>
+                <span class="tooltip">Profile</span></li>
+                <li><a href="{{url_for('staffMaterials')}}">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="link-name">Digital Materials</span>
+                </a></li>
+                <li><a href="{{url_for('staffInternalMarks')}}">
+                    <i class="uil uil-chart"></i>
+                    <span class="link-name">Internal Marks</span>
+                </a></li>
+                <li><a href="{{url_for('announcements')}}">
+                    <i class='bx bx-alarm-exclamation'></i>
+                    <span class="link-name">Post Announcements</span>
+                </a></li>
+
+                {% if session['data'][-1]=='yes' %}
+
+                <li><a href="{{url_for('staffAttendance')}}">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span class="link-name">Attendance</span>
+                </a></li>
+                <li><a href="{{url_for('staffLeaveLetters')}}">
+                    <i class="uil uil-comments"></i>
+                    <span class="link-name">Leave Requests</span>
+                </a></li>
+                <li><a href="{{url_for('leaveHistory')}}">
+                    <i class='bx bxs-book-content'></i>
+                    <span class="link-name">Leave History</span>
+                </a></li>
+
+                <li><a href="{{url_for('papers')}}">
+                    <i class='bx bx-copy-alt'></i>
+                    <span class="link-name">Papers</span>
+                </a></li>
+
+                <li><a href="{{url_for('searchStudent')}}">
+                    <i class='bx bx-street-view'></i>
+                    <span class="link-name">Search Student</span>
+                </a></li>
+                {% endif %}
+
+                <li><a href="{{url_for('staffSettings')}}">
+                    <i class='bx bx-customize'></i>
+                    <span class="link-name">Settings</span>
+                </a></li>
+                <li><a href="{{url_for('index')}}">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Logout</span>
+                </a></li>
+
+                {%endif%}
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                        <div class="mode-toggle">
+                            <span class="switch"></span>
+                          </div>
+                </a>
+
+
+            </li>
+</ul>
+            </div>
+    </nav>
+
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+
+            <div class="name">
+                JAK PORTAL
+                <div class="subname">
+                    An AIML Department ERP Portal
+                </div>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p id="successmessage1">{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <img id="image" src="/static/Images/logomain.png" alt="">
+        </div>
+
+        <div class="dash-content">
+            <div class="overview">
+                <div class="title">
+                    <i class='bx bx-user-voice'></i>
+                    <span class="text">Attendance</span>
+                </div>
+            </div>
+        </div>
+        <table class="center">
+            <div class="opt">
+                <form action="/showAttendance" method="post">
+                <div class="opt1">
+                    <select name="class">
+                        {% for year in existingYears %}
+                        {% if year==selected %}
+                            <option value="{{year}}" selected>{{ year }}</option>
+                        {% else %}
+                            <option value="{{year}}">{{ year }}</option>
+                        {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+                    <div class="opt1">
+                    <input type="submit" class="button" value="Show" name="clicked">
+                </div>
+                <div class="opt1">
+                    <input type="submit" class="button" value="Retake" name="clicked">
+                </div>
+                <div class="opt1">
+                    <input type="date" name="retakeDate" id="retakeDate" class="select">
+                </div>
+
+                </div>
+                </form>
+            </div>
+            <br>
+            {% if studentDetails=="taken" %}
+            <center>
+            <div class="note" >
+                <br>
+                <strong>Attendance has already been taken</strong>
+            </div>
+        </center>
+            {% else %}
+
+            {% for index in range (studentDetails|length) %}
+                <div class="form" id="show{{ index+1 }}">
+                    <form action="/uploadAttendance" method="post" enctype="multipart/form-data">
+                    <table class="center">
+                        <thead>
+                            <tr>
+                                <th>Register Number</th>
+                                <th>Student Name</th>
+                                <th>Present/Absent/OD</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for student in studentDetails[index] %}
+                            <tr class="student">
+                                <td class="name-col">{{ student[0] }}</td>
+                                <td class="name-col">{{ student[1] }}</td>
+                                <td class="max-col">
+                                    <ul>
+                                        <li>
+                                            <div id='app' class='container'>
+                                                <div class='tss'>
+                                                    <input type='radio' name='{{ student[0] }}_attendance' id='{{ student[0] }}_1' value='P' v-model='{{ student[0] }}_filter' checked>
+                                                    <label for='{{ student[0] }}_1'><span>Pr</span></label>
+                                                    <input type='radio' name='{{ student[0] }}_attendance' id='{{ student[0] }}_2' value='A' v-model='{{ student[0] }}_filter'>
+                                                    <label for='{{ student[0] }}_2'><span>Ab</span></label>
+                                                    <input type='radio' name='{{ student[0] }}_attendance' id='{{ student[0] }}_3' value='OD' v-model='{{ student[0] }}_filter'>
+                                                    <label for='{{ student[0] }}_3'><span>OD</span></label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <center>
+                    <input class="button" type="submit" value="Update" name="clicked">
+                </center>
+                </div>
+
+            {% endfor %}
+            {% endif %}
+            <br>
+            <div class="opt">
+            {% set yrToCls = ({"2nd Year A":"A2","3rd Year A": "A3","4th Year A":"A4", "2nd Year B":"B2"})	%}
+            {% if selected!="None" %}
+            <div class="opt1">
+                <center>
+            <a href="static/attendance/{{yrToCls[selected]}}.xlsx" class="dow" id="myselection" target="_blank">Download</a>
+        </center>
+                <form action="/uploadAttendance" method="post" enctype="multipart/form-data">
+                    <input type="file" name="attendanceFile" id="attendanceFileInput">
+                    <input class="button" type="submit" name="clicked" value="Upload">
+                </form>
+        </div>
+            {% endif %}
+        </form>
+
+        </table>
+    </div>
+    </div>
+    <form action="/attendanceReport" method="post">
+    <div class="title">
+        <i class='bx bx-book-bookmark' ></i>
+        <span class="text">Attendance Report</span>
+    </div>
+    <center>
+    <div class="opt">
+        <div class="opt1">
+            <select id="reportType" name="reportType">
+                <option value="daily">Daily</option>
+                <option value="monthly">Monthly</option>
+            </select>
+            </div>
+            <div class="opt1">
+            <select id="monthSelector" name="monthSelector" style="display:none;">
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">Octomber</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+
+                <!-- Add options for all 12 months -->
+            </select>
+            </div>
+            <div class="opt1">
+            <select id="class" name="class" style="display: none;">
+                <option value="A2">2nd Year</option>
+                <option value="A3">3rd Year</option>
+            </select>
+            </div>
+
+            <div class="opt1">
+    <input type="date" id="dateSelector" name="dateSelector" style="display: none;" class="select">
+    </div>
+    <div class="opt1">
+    <input type="submit" class="button" value="Generate" name="clicked">
+    </div>
+    </div>
+    <br>
+    {% if path!='None' %}
+    <a href="{{path[25:]}}" id="downloadLink" class="dow">Download</a>
+    {% endif %}
+</center>
+    </form>
+</section>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+    // Show/hide the month or date selector based on the initial value
+    toggleReportOptions();
+
+    // Add an event listener to the reportType dropdown
+    document.getElementById("reportType").addEventListener("change", toggleReportOptions);
+});
+
+function toggleReportOptions() {
+    const reportType = document.getElementById("reportType").value;
+    const monthSelector = document.getElementById("monthSelector");
+    const dateSelector = document.getElementById("dateSelector");
+
+    if (reportType === "monthly") {
+        monthSelector.style.display = "inline-block";
+        dateSelector.style.display = "none";
+    } else if (reportType === "daily") {
+        monthSelector.style.display = "none";
+        dateSelector.style.display = "inline-block";
+    }
+}
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var value = document.getElementById("successmessage1");
+        value.style.display = "block";
+
+        setTimeout(function() {
+            value.style.display = "none";
+        }, 3000);
+    });
+
+    $(document).ready(function() {
+        $("div.form:not(:first)").hide();
+        $('#myselection').on('change', function() {
+            var demovalue = $(this).val();
+            //hide all div except demovalue
+            $("div.form").hide();
+            $("#show" + demovalue).show();
+        });
+
+        // Handle Upload button click
+        $('.button[name="clicked"]').on('click', function() {
+            if ($(this).val() === "Upload") {
+                $('#attendanceFileInput').prop('required', true);
+            }
+        });
+
+        // Handle form submission to remove required attribute if not uploading
+        $('form[action="/uploadAttendance"]').on('submit', function() {
+            if ($(this).find('.button[name="clicked"]').val() !== "Upload") {
+                $('#attendanceFileInput').prop('required', false);
+            }
+        });
+    });
+    document.addEventListener("DOMContentLoaded", function() {
+    // Show/hide the class select tag based on the reportType dropdown
+    document.getElementById("reportType").addEventListener("change", function() {
+        const reportType = this.value;
+        const classSelect = document.getElementById("class");
+
+        if (reportType === "monthly") {
+            classSelect.style.display = "inline-block";
+        } else {
+            classSelect.style.display = "none";
+        }
+    });
+});
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded",function(){
+                    var value = document.getElementById("successmessage1");
+                    value.style.display = "block";
+
+                    setTimeout(function(){
+                    value.style.display = "none";
+                    },3000);
+            });
+    $(document).ready(function(){
+        $("div.form:not(:first)").hide();
+        $('#myselection').on('change', function(){
+            var demovalue = $(this).val();
+            //hide all div except demovalue
+            $("div.form").hide();
+            $("#show" + demovalue).show();
+        });
+    });
+    document.addEventListener("DOMContentLoaded", function() {
+    // Add an event listener to the form for generating the report
+    document.querySelector('form[action="/AttendanceReport"]').addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the form from submitting
+
+        // Get the generated download link (replace with your logic)
+        const generatedLink = "/your-download-link";
+
+        // Create and display the popup link
+        const popupLink = document.getElementById("downloadLink");
+        popupLink.href = generatedLink;
+        popupLink.style.display = "block";
+        popupLink.target = "_blank";
+    });
+});
+
+</script>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

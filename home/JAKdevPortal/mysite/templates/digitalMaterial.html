@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+    <title>JAK PORTAL</title> 
+    <script type="text/javascript">
+        function preventBack(){window.history.forward()};
+        setTimeout("preventBack()", 0);
+        window.onunload=function(){null;}
+    </script>
+
+</head>
+<style>
+table {
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 14px;
+}
+th {
+    color: var(--text-color);
+
+}
+
+td {
+    border-top: 1px solid #eee;
+    padding: 2em 1em;
+    font-size: 16px;
+}
+.name-col {
+    text-align: left;
+}
+
+  .avatar-upload {
+    position: relative;
+    max-width: 205px;
+    margin: 50px auto;
+  }
+  .avatar-upload .avatar-edit {
+    position: absolute;
+    right: 12px;
+    z-index: 1;
+    top: 10px;
+  }
+  .avatar-upload .avatar-edit input {
+    display: none;
+  }
+  .avatar-upload .avatar-edit input + label {
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    margin-bottom: 0;
+    border-radius: 100%;
+    background: #FFFFFF;
+    border: 1px solid transparent;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    font-weight: normal;
+    transition: all 0.2s ease-in-out;
+  }
+  .avatar-upload .avatar-edit input + label:hover {
+    background: #f1f1f1;
+    border-color: #d6d6d6;
+  }
+  .avatar-upload .avatar-edit input + label:after {
+    font-family: 'FontAwesome';
+    color:rgb(98, 206, 15);
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin: auto;
+  }
+  .avatar-upload .avatar-edit label i{
+    margin-bottom: 100px;
+    font-size: 20px;
+    padding: 1px 5px 10px 5px;
+  
+  }
+  .avatar-upload .avatar-preview {
+    width: 192px;
+    height: 192px;
+    position: relative;
+    border-radius: 100%;
+    border: 6px solid #F8F8F8;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+  }
+  .avatar-upload .avatar-preview > div {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .material {
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  padding: 10px 14px;
+  gap: 50px;
+  width: 100%;
+}
+
+.left {
+  flex: 1;
+  width: 100%;
+}
+
+.right {
+  flex: 1;
+  width: 100%;
+}
+li{
+    color: var(--text-color);
+    text-align: justify;
+    list-style: none;
+    
+}
+a{
+    text-decoration: none;
+}
+a li{
+    text-decoration: none;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.mainbox{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    align-items: center;
+    border-radius: 12px;
+    width: 100%;
+    padding: 15px 20px;
+    background-color:var(--box6-color);
+    transition: var(--tran-05);
+}
+
+.mainbox .text{
+    white-space: nowrap;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+.boxes .box .number{
+    font-size: 25px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+td li{
+    margin-left: 10px;
+    color: var(--text-color);
+    text-align: justify;
+    list-style:disc;
+
+}
+.mainmaterial{
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-color);
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+
+.opt{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.opt1{
+  justify-content: space-between;
+  align-items: center;
+}
+table.center {
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%; /* Make sure the table takes up full width */
+        }
+
+        th, td{
+            padding: 1em 1em;
+            text-align: center;
+        }
+
+        th {
+            background-color: #0b3cc1;
+            color: #fff;
+        }
+
+        td {
+            border-top: 1px solid var(--panel-color);
+            color: var(--text-color);
+            background-color: var(--table-color);
+        }
+        td a{
+            margin-left: 10px;
+            color: var(--text-color);
+            font-weight: 600;
+
+        }
+
+        th.missed-col {
+            background-color: #3bbc4a;
+        }
+
+        td.missed-col {
+            background-color: #ecfff4;
+            color: rgb(4, 255, 0);
+        }
+
+        /* Apply different styles for smaller screens */
+        @media only screen and (max-width: 600px) {
+            table.center{
+                width: 100%;
+            }
+            th, td {
+                font-size: 12px;
+            }
+            td.name-col {
+                font-weight: bold;
+            }
+        }
+@media(max-width:550px)
+{
+    .opt{
+        flex-direction: column;
+    }
+}
+.button {
+  padding: 10px;
+  color: white;
+  background-color: #0b3cc1;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+}
+</style>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="/static/Images/logo.png" alt="">
+            </div>
+
+            <span class="logo_name"></span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="{{url_for('profile')}}">
+                    <i class="uil uil-estate"></i>
+                    <span class="link-name">Profile</span>
+                </a></li>
+                <li><a href="{{url_for('digitalMaterial')}}">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="link-name">Digital Materials</span>
+                </a></li>
+                <li><a href="{{url_for('internalMark')}}">
+                    <i class="uil uil-chart"></i>
+                    <span class="link-name">Internal Marks</span>
+                </a></li>
+                <li><a href="{{url_for('leaveApplication')}}">
+                    <i class="uil uil-comments"></i>
+                    <span class="link-name">Leave Letter</span>
+                </a></li>
+                <li><a href="{{url_for('certifications')}}">
+                    <i class='bx bx-book-content'></i>
+                    <span class="link-name">Certifications</span>
+                </a></li>
+                <li><a href="{{url_for('projects')}}">
+                    <i class='bx bx-layer'></i>
+                    <span class="link-name">Projects</span>
+                </a></li>
+                </a></li>
+                <li><a href="{{url_for('prizes')}}">
+                    <i class='bx bx-medal' ></i>
+                    <span class="link-name">Prizes</span>
+                </a></li>
+                <li><a href="{{url_for('internships')}}">
+                    <i class='bx bx-medal' ></i>
+                    <span class="link-name">Internships</span>
+                </a></li>
+                <li><a href="{{url_for('staffs')}}">
+                    <i class='bx bx-male-female'></i>
+                    <span class="link-name">Staff Details</span>
+                </a></li>
+
+                <li><a href="{{url_for('settings')}}">
+                    <i class='bx bx-customize'></i>
+                    <span class="link-name">Settings</span>
+                </a></li>
+
+                <li><a href="{{url_for('index')}}">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Logout</span>
+                </a></li>
+
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                        <div class="mode-toggle">
+                            <span class="switch"></span>
+                          </div>
+                </a>
+
+
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+
+            <div class="name">
+                JAK PORTAL
+                <div class="subname">
+                    An AIML Department ERP Portal
+                </div> 
+            </div>
+            <img id="image" src="/static/Images/logomain.png" alt="">
+        </div>
+
+        <div class="dash-content">
+            <div class="overview">
+                <div class="title">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="text">Digital Materials</span>
+                </div>
+				<form action="/showMaterial" method="post">        
+                    <div class="opt">
+                        <div class="opt1">
+                            <select name="subject" id="subject">
+                                {% for i in subjects %}
+                                {% if i==selected %}
+                                <option value="{{i}}" selected>{{i}}</option>
+                                {% else %}
+                                <option value="{{i}}">{{i}}</option>
+                                {% endif %}
+                                {% endfor %}
+                                </select>
+                    </div>
+                    <div class="opt2">
+                        <button type="submit" name="clicked" class="button" value="show">Show</button>
+                        {% if selected!="None" %}
+                    </div>
+                    </div>
+                    <br>
+ <table class="center">
+                <thead>
+                    <tr>
+                        <th>Unit</th>
+                        <th>Main Material</th>
+                        <th>Additional Material</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if (mainMaterials|length)==0 %}
+                    <tr class="student">
+                        <td class="name-col">-</td>
+                        <td class="name-col">No Materials</td>
+                        <td class="name-col">-</td>
+                    </tr>
+                    {% endif %}
+                    
+                    {% for i in range(mainMaterials|length) %}
+                    <tr class="student">
+                        <td class="name-col">Unit 1</td>
+                        <td class="name-col">
+                            <a href="static/materials/{{cls}}/{{selected}}/unit{{i+1}}/{{mainMaterials[i]}}" target="_blank">{{mainMaterials[i]}}</a>
+                        </td>
+                        <td class="name-col">
+                            <ul>    
+                                {% for j in additionalMaterials[i] %}
+                                    <li>
+                                        <a href="static/materials/{{cls}}/{{selected}}/unit{{i+1}}/additional materials/{{j}}" target="_blank">{{j}}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>                        {% endif %}
+                    </div>
+                </div>
+                </form>
+            </div>
+
+         
+    </section>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

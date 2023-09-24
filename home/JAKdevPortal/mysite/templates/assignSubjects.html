@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>JAK PORTAL</title> 
+    <script type="text/javascript">
+        function preventBack(){window.history.forward()};
+        setTimeout("preventBack()", 0);
+        window.onunload=function(){null;}
+    </script>
+
+</head>
+<style>
+table.center {
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%; /* Make sure the table takes up full width */
+        }
+
+        th, td {
+            padding: 1em 1em;
+            text-align: center;
+        }
+
+        th {
+            background-color: #0b3cc1;
+            color: #fff;
+        }
+
+        td {
+            border-top: 1px solid var(--panel-color);
+            color: var(--text-color);
+            background-color: var(--table-color);
+        }
+
+        th.missed-col {
+            background-color: #3bbc4a;
+        }
+
+        td.missed-col {
+            background-color: #ecfff4;
+            color: rgb(4, 255, 0);
+        }
+
+        /* Apply different styles for smaller screens */
+        @media only screen and (max-width: 600px) {
+            th, td {
+                padding: 0.5em 0.5em;
+            }
+            td.name-col {
+                font-weight: bold;
+            }
+        }
+  .avatar-upload {
+    position: relative;
+    max-width: 205px;
+    margin: 50px auto;
+  }
+  .avatar-upload .avatar-edit {
+    position: absolute;
+    right: 12px;
+    z-index: 1;
+    top: 10px;
+  }
+  .avatar-upload .avatar-edit input {
+    display: none;
+  }
+
+  .avatar-upload .avatar-preview {
+    width: 200px;
+    height: 250px;
+    position: relative;
+    border-radius: 100%;
+    border: 6px solid #F8F8F8;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+  }
+  .avatar-upload .avatar-preview > div {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+.opt{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.opt1{
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 500;
+  line-height: 1;
+  padding: 1em 1.5em;
+  position: relative;
+  background-color: #0b3cc1;
+  }
+  input[type="name"]{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 6px 0;
+    margin: 10px 0;
+    font-size: 1.1em;
+    border: none;
+    color:var(--text-color);
+    border-bottom: 1px solid #333;
+    outline: none;
+    background: transparent;
+    resize: none;
+    transition: 0.5s;
+  }
+  #successmessage1{
+    margin-top: 30px;
+    display:none;
+    background-color: rgb(19, 49, 83);
+    text-align: center;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 12px;
+}
+</style>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="/static/Images/logo.png" alt="">
+            </div>
+
+            <span class="logo_name"></span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="{{url_for('createClass')}}">
+                    <i class='bx bx-book-add'></i>
+                    <span class="link-name">Create Class</span>
+                </a></li>
+                <li><a href="{{url_for('assignSubjects')}}">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="link-name">Subject Names</span>
+                </a></li>
+                <li><a href="{{url_for('staffDetails')}}">
+                    <i class='bx bx-user-plus'></i>
+                    <span class="link-name">Staff Details</span>
+                </a></li>
+                <li><a href="{{url_for('assignCounsellors')}}">
+                    <i class='bx bx-user-voice'></i>
+                    <span class="link-name">Assign Counsellors</span>
+                </a></li>
+                <li><a href="{{url_for('announcements')}}">
+                    <i class='bx bx-alarm-exclamation'></i>
+                    <span class="link-name">Post Announcements</span>
+                </a></li>
+                <li><a href="{{url_for('staffAttendance')}}">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span class="link-name">Attendance</span>
+                </a></li>
+                <li><a href="{{url_for('adminInternal')}}">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span class="link-name">Internal Marks</span>
+                </a></li>
+
+                <li><a href="{{url_for('leaveHistory')}}">
+                    <i class='bx bxs-book-content'></i>
+                    <span class="link-name">Leave History</span>
+                </a></li>
+                <li><a href="{{url_for('searchStudent')}}">
+                    <i class='bx bx-street-view'></i>
+                    <span class="link-name">Search Student</span>
+                </a></li>
+
+                <li><a href="{{url_for('adminSettings')}}">
+                    <i class='bx bx-customize'></i>
+                    <span class="link-name">Settings</span>
+                </a></li>
+                <li><a href="{{url_for('index')}}">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Logout</span>
+                </a></li>
+
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                        <div class="mode-toggle">
+                            <span class="switch"></span>
+                          </div>
+                </a>
+
+
+            </li>
+            </ul>
+                </div>
+    </nav>
+
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+
+            <div class="name">
+                JAK PORTAL
+                <div class="subname">
+                    An AIML Department ERP Portal
+                </div> 
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p id="successmessage1">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            </div>
+            <img id="image" src="/static/Images/logomain.png" alt="">
+        </div>
+
+        <div class="dash-content">
+            <div class="overview">
+                <div class="title">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="text">Subject Names</span>
+                    </div>
+                    </div>
+                    </div>
+                    <form action="/newSubjects" method="post">
+                    <div class="opt">
+                        <div class="opt1">
+                    <select name="class" required="">
+                        {% for class in classes %}
+                        <option value="{{class}}">{{class}}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    </div>
+                    <br>
+                    <table class="center">
+                        <thead>
+                            <tr>
+                                <th>Subject Name</th>
+                                <th>Subject Code</th>
+                                <th>Faculty</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {%for i in range(1,7)%}
+                            {% if i==6 %}
+                            <tr class="student">
+                                <td class="name-col"><input type="name" name="subjectName{{i}}" placeholder="Subject Name"></td>
+                                <td class="name-col"><input type="name" name="subjectCode{{i}}" placeholder="Subject Code"></td>
+                                <td class="name-col">
+                                    <select name="staff{{i}}">
+                                        {% for staff in staffs %}
+                                        <option value="{{staff}}">{{staff}}</option>
+                                        {% endfor %}
+                                      </select>
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr class="student">
+                                <td class="name-col"><input type="name" name="subjectName{{i}}" placeholder="Subject Name" required=""></td>
+                                <td class="name-col"><input type="name" name="subjectCode{{i}}" placeholder="Subject Code"required=""></td>
+                                <td class="name-col">
+                                    {% if i==6 %}
+                                    <select name="staff{{i}}">
+                                        {% for staff in staffs %}
+                                        <option value="{{staff}}">{{staff}}</option>
+                                        {% endfor %}
+                                      </select>
+                                        {% else %}
+
+
+                                    <select name="staff{{i}}" required="">
+                                        {% for staff in staffs %}
+                                        <option value="{{staff}}">{{staff}}</option>
+                                        {% endfor %}
+                                      </select>
+                                        {% endif %}
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                            </tbody>
+
+                            </table>
+                            <center>
+                            <input id="custom-button" class="button" type="submit" name="clicked" value="Assign">
+                        </center>
+                        </form>
+    </section>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded",function(){
+                    var value = document.getElementById("successmessage1");
+                    value.style.display = "block";
+
+                    setTimeout(function(){
+                    value.style.display = "none";
+                    },3000);
+            });
+    </script>
+</body>
+</html>

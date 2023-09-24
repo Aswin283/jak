@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+    <title>JAK PORTAL</title> 
+    <script type="text/javascript">
+        function preventBack(){window.history.forward()};
+        setTimeout("preventBack()", 0);
+        window.onunload=function(){null;}
+    </script>
+
+</head>
+<style>
+  .avatar-upload {
+    position: relative;
+    max-width: 205px;
+    margin: 50px auto;
+  }
+  .avatar-upload .avatar-edit {
+    position: absolute;
+    right: 12px;
+    z-index: 1;
+    top: 10px;
+  }
+  td {
+    border-top: 1px solid #eee;
+    color: var(--text-color);
+    padding: 1em 1em;
+    background-color: #142345;
+}
+
+  .avatar-upload .avatar-edit input {
+    display: none;
+  }
+
+  .avatar-upload .avatar-preview {
+    width: 200px;
+    height: 250px;
+    position: relative;
+    border-radius: 100%;
+    border: 6px solid #F8F8F8;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+  }
+  .avatar-upload .avatar-preview > div {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+.opt{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.opt1{
+  justify-content: space-between;
+  align-items: center;
+}
+table.center {
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%; /* Make sure the table takes up full width */
+        }
+
+        th, td {
+            padding: 1em 1em;
+            text-align: center;
+        }
+
+        th {
+            background-color: #0b3cc1;
+            color: #fff;
+        }
+
+        td {
+            border-top: 1px solid var(--panel-color);
+            color: var(--text-color);
+            background-color: var(--table-color);
+        }
+
+        th.missed-col {
+            background-color: #3bbc4a;
+        }
+
+        td.missed-col {
+            background-color: #ecfff4;
+            color: rgb(4, 255, 0);
+        }
+
+        /* Apply different styles for smaller screens */
+        @media only screen and (max-width: 600px) {
+            th, td {
+                padding: 0.5em 0.5em;
+            }
+            td.name-col {
+                font-weight: bold;
+            }
+        }
+@media(max-width:550px)
+{
+    .opt{
+        flex-direction: column;
+    }
+}
+input[type="name"]{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 6px 0;
+    margin: 10px 0;
+    font-size: 1.1em;
+    border: none;
+    border-bottom: 1px solid #333;
+    outline: none;
+    background: transparent;
+    resize: none;
+    transition: 0.5s;
+  }
+
+  #custom-button {
+  padding: 10px;
+  color: white;
+  background-color: #0b3cc1;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#custom-button:hover {
+  background-color: #0b3cc1;
+}
+
+#custom-text {
+  margin-left: 10px;
+  font-family: sans-serif;
+  color: #aaa;
+}
+td a{
+    color: #0b3cc1;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+#successmessage1{
+    display:none;
+    background-color: lightgreen;
+    text-align: center;
+    border:2px solid black;
+}
+</style>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="/static/Images/logo.png" alt="">
+            </div>
+
+            <span class="logo_name"></span>
+        </div>
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="{{url_for('createClass')}}">
+                    <i class='bx bx-book-add'></i>
+                    <span class="link-name">Create Class</span>
+                </a></li>
+                <li><a href="{{url_for('assignSubjects')}}">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="link-name">Subject Names</span>
+                </a></li>
+                <li><a href="{{url_for('staffDetails')}}">
+                    <i class='bx bx-user-plus'></i>
+                    <span class="link-name">Staff Details</span>
+                </a></li>
+                <li><a href="{{url_for('assignCounsellors')}}">
+                    <i class='bx bx-user-voice'></i>
+                    <span class="link-name">Assign Counsellors</span>
+                </a></li>
+                <li><a href="{{url_for('adminInternal')}}">
+                    <i class="uil uil-chart"></i>
+                    <span class="link-name">Internal Marks</span>
+                </a></li>
+                <li><a href="{{url_for('adminSettings')}}">
+                    <i class='bx bx-customize'></i>
+                    <span class="link-name">Settings</span>
+                </a></li>
+                <li><a href="{{url_for('index')}}">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Logout</span>
+                </a></li>
+
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                        <div class="mode-toggle">
+                            <span class="switch"></span>
+                          </div>
+                </a>
+
+
+            </li>
+            </ul>
+       </div>
+    </nav>
+
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+
+            <div class="name">
+                JAK PORTAL
+                <div class="subname">
+                    An AIML Department ERP Portal
+                </div> 
+            </div>
+            <img id="image" src="/static/Images/logomain.png" alt="">
+            
+            
+        </div>
+        {% if certificates!=[] %}
+
+        <div class="dash-content">
+
+            <div class="overview">
+                <div class="title">
+                    <i class='bx bx-book-content'></i>
+                    <span class="text">Essentials</span>
+                </div>
+            </div>
+            <table class="center">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>File</th>
+                    </tr>
+                </thead>
+                {% set clsToYr=({"A2":"2nd Year A","A3":"3rd Year A","A4":"4th Year A","B2":"2nd Year B"})	%}
+
+                {% for cls in classes %}
+                <tr class="student">
+                    <td class="name-col">Internal Assessment I ({{clsToYr[cls]}})</td>
+                    <td class="name-col"><a href="/static/{{cls}}Internal Assessment I.xlsx"  target="_blank">Download</a></td>
+                </tr>
+                <tr class="student">
+                    <td class="name-col">Internal Assessment II ({{clsToYr[cls]}})</td>
+                    <td class="name-col"><a href="/static/{{cls}}Internal Assessment II.xlsx"  target="_blank">Download</a></td>
+                </tr>
+                <tr class="student">
+                    <td class="name-col">Model Exam ({{clsToYr[cls]}})</td>
+                    <td class="name-col"><a href="/static/{{cls}}Model Exam.xlsx"  target="_blank">Download</a></td>
+                </tr>
+                <tr class="student">
+                    <td class="name-col">Attendance ({{clsToYr[cls]}})</td>
+                    <td class="name-col"><a href="/static/attendance/{{cls}}.xlsx"  target="_blank">Download</a></td>
+                </tr>
+                {% endfor %}
+
+                </tbody>
+                </table>
+                <form action="/deleteData" method="POST">
+                    <input id="custom-button" type="submit" name="clicked" value="{{promote}}">
+                    </form>
+
+                </div>  
+
+                {% endif %}
+                <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+<br>
+<br>
+
+<br>
+<br>

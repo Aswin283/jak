@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>JAK PORTAL</title> 
+    <script type="text/javascript">
+        function preventBack(){window.history.forward()};
+        setTimeout("preventBack()", 0);
+        window.onunload=function(){null;}
+    </script>
+
+</head>
+<style>
+.opt{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.buttons{
+    display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.opt1{
+  justify-content: space-between;
+  align-items: center;
+}
+
+table.center {
+            margin-left: auto;
+            margin-right: auto;
+}
+th {
+    background-color: #0b3cc1;
+    color: #fff;
+    padding: 1.2em 1em;
+    max-width: 700px;
+}
+
+td {
+    border-top: 1px solid var(--panel-color);
+    color: var(--text-color);
+    padding: 1em 1em;
+    background-color: var(--table-color);
+}
+
+th.missed-col {
+    background-color: #3bbc4a;
+}
+
+td.missed-col {
+    background-color: #ecfff4;
+    color: rgb(4, 255, 0);
+    text-align: center;
+}
+td.max-col {
+    border-top: 1px solid #eee;
+    padding: 1em 1em;
+    text-align: center;
+}
+  .avatar-upload {
+    position: relative;
+    max-width: 205px;
+    margin: 50px auto;
+  }
+  .avatar-upload .avatar-edit {
+    position: absolute;
+    right: 12px;
+    z-index: 1;
+    top: 10px;
+  }
+  .avatar-upload .avatar-edit input {
+    display: none;
+  }
+  .avatar-upload .avatar-edit input + label {
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    margin-bottom: 0;
+    border-radius: 100%;
+    background: #FFFFFF;
+    border: 1px solid transparent;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    font-weight: normal;
+    transition: all 0.2s ease-in-out;
+  }
+  .avatar-upload .avatar-edit input + label:hover {
+    background: #f1f1f1;
+    border-color: #d6d6d6;
+  }
+  .avatar-upload .avatar-edit input + label:after {
+    font-family: 'FontAwesome';
+    color:rgb(98, 206, 15);
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin: auto;
+  }
+  .avatar-upload .avatar-edit label i{
+    margin-bottom: 100px;
+    font-size: 20px;
+    padding: 1px 5px 10px 5px;
+  
+  }
+  .avatar-upload .avatar-preview {
+    width: 192px;
+    height: 192px;
+    position: relative;
+    border-radius: 100%;
+    border: 6px solid #F8F8F8;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+  }
+  .avatar-upload .avatar-preview > div {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+li{
+    color: var(--text-color);
+    text-align: justify;
+    list-style: none;
+    
+}
+a{
+    text-decoration: none;
+}
+a li{
+    text-decoration: none;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    
+}
+select:invalid { color: gray; }
+
+.mainbox{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    align-items: center;
+    border-radius: 12px;
+    width: 100%;
+    padding: 15px 20px;
+    background-color:var(--box6-color);
+    transition: var(--tran-05);
+}
+
+.mainbox .text{
+    white-space: nowrap;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+.boxes .box .number{
+    font-size: 25px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.mainmaterial{
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-color);
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+@media(max-width:550px)
+{
+    .opt{
+        flex-direction: column;
+    }
+}
+input[type="name"]{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 6px 0;
+    margin: 10px 0;
+    font-size: 1.1em;
+    border: none;
+    border-bottom: 1px solid #333;
+    outline: none;
+    background: transparent;
+    resize: none;
+    transition: 0.5s;
+  }
+
+  #custom-button {
+  padding: 10px;
+  color: white;
+  background-color: #0b3cc1;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#custom-button:hover {
+  background-color: #0b3cc1;
+}
+
+#custom-text {
+  margin-left: 10px;
+  font-family: sans-serif;
+  color: #aaa;
+}
+td a{
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: none;
+}
+#successmessage1{
+    margin-top: 30px;
+    display:none;
+    background-color: rgb(19, 49, 83);
+    text-align: center;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 12px;
+}
+</style>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="/static/Images/logo.png" alt="">
+            </div>
+
+            <span class="logo_name"></span>
+        </div>
+
+        <div class="menu-items">
+            {% if session['data']|length==2 %}
+            <ul class="nav-links">
+                <li><a href="{{url_for('createClass')}}">
+                    <i class='bx bx-book-add'></i>
+                    <span class="link-name">Create Class</span>
+                </a></li>
+                <li><a href="{{url_for('assignSubjects')}}">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="link-name">Subject Names</span>
+                </a></li>
+                <li><a href="{{url_for('staffDetails')}}">
+                    <i class='bx bx-user-plus'></i>
+                    <span class="link-name">Staff Details</span>
+                </a></li>
+                <li><a href="{{url_for('assignCounsellors')}}">
+                    <i class='bx bx-user-voice'></i>
+                    <span class="link-name">Assign Counsellors</span>
+                </a></li>
+                <li><a href="{{url_for('announcements')}}">
+                    <i class='bx bx-alarm-exclamation'></i>
+                    <span class="link-name">Post Announcements</span>
+                </a></li>
+                <li><a href="{{url_for('staffAttendance')}}">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span class="link-name">Attendance</span>
+                </a></li>
+                <li><a href="{{url_for('adminInternal')}}">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span class="link-name">Internal Marks</span>
+                </a></li>
+
+                <li><a href="{{url_for('leaveHistory')}}">
+                    <i class='bx bxs-book-content'></i>
+                    <span class="link-name">Leave History</span>
+                </a></li>
+                <li><a href="{{url_for('searchStudent')}}">
+                    <i class='bx bx-street-view'></i>
+                    <span class="link-name">Search Student</span>
+                </a></li>
+
+                <li><a href="{{url_for('adminSettings')}}">
+                    <i class='bx bx-customize'></i>
+                    <span class="link-name">Settings</span>
+                </a></li>
+                <li><a href="{{url_for('index')}}">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Logout</span>
+                </a></li>
+
+                {%else%}
+
+            <ul class="nav-links">
+                <li><a href="{{url_for('staffProfile')}}">
+                    <i class="uil uil-estate"></i>
+                    <span class="link-name">Profile</span>
+                </a>
+                <span class="tooltip">Profile</span></li>
+                <li><a href="{{url_for('staffMaterials')}}">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="link-name">Digital Materials</span>
+                </a></li>
+                <li><a href="{{url_for('staffInternalMarks')}}">
+                    <i class="uil uil-chart"></i>
+                    <span class="link-name">Internal Marks</span>
+                </a></li>
+                <li><a href="{{url_for('announcements')}}">
+                    <i class='bx bx-alarm-exclamation'></i>
+                    <span class="link-name">Post Announcements</span>
+                </a></li>
+
+                {% if session['data'][-1]=='yes' %}
+
+                <li><a href="{{url_for('staffAttendance')}}">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span class="link-name">Attendance</span>
+                </a></li>
+                <li><a href="{{url_for('staffLeaveLetters')}}">
+                    <i class="uil uil-comments"></i>
+                    <span class="link-name">Leave Requests</span>
+                </a></li>
+                <li><a href="{{url_for('leaveHistory')}}">
+                    <i class='bx bxs-book-content'></i>
+                    <span class="link-name">Leave History</span>
+                </a></li>
+
+                <li><a href="{{url_for('papers')}}">
+                    <i class='bx bx-copy-alt'></i>
+                    <span class="link-name">Papers</span>
+                </a></li>
+
+                <li><a href="{{url_for('searchStudent')}}">
+                    <i class='bx bx-street-view'></i>
+                    <span class="link-name">Search Student</span>
+                </a></li>
+                {% endif %}
+
+                <li><a href="{{url_for('staffSettings')}}">
+                    <i class='bx bx-customize'></i>
+                    <span class="link-name">Settings</span>
+                </a></li>
+                <li><a href="{{url_for('index')}}">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Logout</span>
+                </a></li>
+                {%endif%}
+
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                        <div class="mode-toggle">
+                            <span class="switch"></span>
+                          </div>
+                </a>
+
+
+            </li>
+</ul>
+            </div>
+    </nav>
+
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+
+            <div class="name">
+                JAK PORTAL
+                <div class="subname">
+                    An AIML Department ERP Portal
+                </div> 
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p id="successmessage1">{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            
+            <img id="image" src="/static/Images/logomain.png" alt="">
+        </div>
+
+        <form action="/addAnnouncement" method="POST">
+        <div class="dash-content">
+            <div class="overview">
+                <div class="title">
+                    <i class='bx bx-alarm-exclamation'></i>
+                    <span class="text">Post Announcements</span>
+                </div>
+            </div>
+            <div class="search">
+                <div class="search-box">
+                    <input type="text" name="announcement" placeholder="Mention Announcement here..." required="">
+                    <label>From </label><input type="date" name="fromDate"placeholder="dd-mm-yyyy" value=""
+                    min="" max="2030-12-31" >
+                    <label>To</label><input type="date" name="toDate" placeholder="dd-mm-yyyy" value=""
+                    min="1997-01-01" max="2030-12-31" required="">
+                    <input type="submit" name="clicked" class="button" value="Submit" required="">
+                  </div>
+                </form>
+                </div>
+                <div class="title">
+                    <i class='bx bx-alarm-exclamation'></i>
+                    <span class="text">Delete Announcements</span>
+                </div>
+                <table class="center">
+                    <tbody>
+                      {% for announcement in announcements %}
+                        <tr class="student">
+                            <td class="name-col">{{announcement}}</td>
+                            <td class="name-col"><a href="/deleteAnnouncement/{{ announcement }}">Delete</a></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                        </table>
+                </div>
+            
+                
+    </section>
+    
+    <script>
+        const currentDate = new Date().toISOString().split('T')[0];
+        document.getElementById('dateInput').setAttribute('min', currentDate);
+    </script>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+<script>
+        document.addEventListener("DOMContentLoaded",function(){
+                    var value = document.getElementById("successmessage1");
+                    value.style.display = "block";
+
+                    setTimeout(function(){
+                    value.style.display = "none";
+                    },3000);
+            });
+    </script>
+</body>
+</html>

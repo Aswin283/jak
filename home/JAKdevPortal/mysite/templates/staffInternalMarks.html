@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>JAK PORTAL</title> 
+    <script type="text/javascript">
+        function preventBack(){window.history.forward()};
+        setTimeout("preventBack()", 0);
+        window.onunload=function(){null;}
+    </script>
+
+</head>
+<style>
+  .avatar-upload {
+    position: relative;
+    max-width: 205px;
+    margin: 50px auto;
+  }
+  .avatar-upload .avatar-edit {
+    position: absolute;
+    right: 12px;
+    z-index: 1;
+    top: 10px;
+  }
+  .avatar-upload .avatar-edit input {
+    display: none;
+  }
+
+  .avatar-upload .avatar-preview {
+    width: 200px;
+    height: 250px;
+    position: relative;
+    border-radius: 100%;
+    border: 6px solid #F8F8F8;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+  }
+  .avatar-upload .avatar-preview > div {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+.opt{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.buttons{
+    display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.opt1{
+  justify-content: space-between;
+  align-items: center;
+}
+table.center {
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%; /* Make sure the table takes up full width */
+        }
+
+        th, td {
+            padding: 1em 1em;
+            text-align: center;
+        }
+
+        th {
+            background-color: #0b3cc1;
+            color: #fff;
+        }
+
+        td {
+            border-top: 1px solid var(--panel-color);
+            color: var(--text-color);
+            background-color: var(--table-color);
+        }
+
+        th.missed-col {
+            background-color: #3bbc4a;
+        }
+
+        td.missed-col {
+            background-color: var(--mark-color);
+            color: rgb(4, 255, 0);
+        }
+
+        /* Apply different styles for smaller screens */
+        @media only screen and (max-width: 600px) {
+            th, td {
+                padding: 0.5em 0.5em;
+            }
+            td.name-col {
+                font-weight: bold;
+            }
+        }
+@media(max-width:1047px)
+{
+    .opt{
+        flex-direction: column;
+    }
+}
+input[type="number"] {
+    height: 100%;
+    width: 50%;
+    padding: 0 20px;
+    outline: none;
+    font-size: 14px;
+    gap: 10px;
+    font-weight: 600;
+    color: rgb(4, 255, 0);
+    border: none;
+    background-color: transparent;
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+  .button {
+    padding: 10px;
+  color: white;
+  background-color: #0b3cc1;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+  }
+.butt{
+    justify-content: space-between;
+  align-items: center;
+}
+.butt1 a{
+    text-decoration: none;
+    color: white;
+}
+.butt1 a:hover{
+    color: #0b3cc1;
+}
+.down{
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+}
+  </style>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="/static/Images/logo.png" alt="">
+            </div>
+        </div>
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="{{url_for('staffProfile')}}">
+                    <i class="uil uil-estate"></i>
+                    <span class="link-name">Profile</span>
+                </a>
+                <span class="tooltip">Profile</span></li>
+                <li><a href="{{url_for('staffMaterials')}}">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="link-name">Digital Materials</span>
+                </a></li>
+                <li><a href="{{url_for('staffInternalMarks')}}">
+                    <i class="uil uil-chart"></i>
+                    <span class="link-name">Internal Marks</span>
+                </a></li>
+                <li><a href="{{url_for('announcements')}}">
+                    <i class='bx bx-alarm-exclamation'></i>
+                    <span class="link-name">Post Announcements</span>
+                </a></li>
+
+                {% if session['data'][-1]=='yes' %}
+
+                <li><a href="{{url_for('staffAttendance')}}">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span class="link-name">Attendance</span>
+                </a></li>
+                <li><a href="{{url_for('staffLeaveLetters')}}">
+                    <i class="uil uil-comments"></i>
+                    <span class="link-name">Leave Requests</span>
+                </a></li>
+                <li><a href="{{url_for('leaveHistory')}}">
+                    <i class='bx bxs-book-content'></i>
+                    <span class="link-name">Leave History</span>
+                </a></li>
+
+                <li><a href="{{url_for('papers')}}">
+                    <i class='bx bx-copy-alt'></i>
+                    <span class="link-name">Papers</span>
+                </a></li>
+
+                <li><a href="{{url_for('searchStudent')}}">
+                    <i class='bx bx-street-view'></i>
+                    <span class="link-name">Search Student</span>
+                </a></li>
+                {% endif %}
+
+                <li><a href="{{url_for('staffSettings')}}">
+                    <i class='bx bx-customize'></i>
+                    <span class="link-name">Settings</span>
+                </a></li>
+                <li><a href="{{url_for('index')}}">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Logout</span>
+                </a></li>
+                </ul>
+
+                <li class="mode">
+                    <a href="#">
+                        <div class="mode-toggle">
+                            <span class="switch"></span>
+                          </div>
+                </a>
+
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+
+            <div class="name">
+                JAK PORTAL
+                <div class="subname">
+                    An AIML Department ERP Portal
+                </div> 
+            </div>
+            
+            <img id="image" src="/static/Images/logomain.png" alt="">
+        </div>
+
+        <div class="dash-content">
+            <div class="overview">
+                <div class="title">
+                    <i class="uil uil-chart"></i>
+                    <span class="text">Internal Marks</span>
+                </div>
+            </div>
+            <table class="center">
+                <thead>
+                    <form action="/showInternalMarks" method="post">
+            <div class="opt">
+                <div class="opt1">
+                    <select name="class">
+                        {% for class in classes %}
+                            {% if class == selectedClass %}
+                                <option value="{{ class }}" selected>{{ class }}</option>
+                            {% else %}
+                                <option value="{{ class }}">{{ class }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+            </div>
+            <div class="opt2">
+            <select name="test">
+                {% if selectedTest=="Internal Assessment I" %}
+                <option value="Internal Assessment I" selected>Internal Assessment I</option>
+                {% else %}
+                <option value="Internal Assessment I">Internal Assessment I</option>
+                {% endif %}
+                {% if selectedTest=="Internal Assessment II" %}
+                <option value="Internal Assessment II" selected>Internal Assessment II</option>
+                {% else %}
+                <option value="Internal Assessment II">Internal Assessment II</option>
+                {% endif %}
+                {% if selectedTest=="Model Examination" %}
+                <option value="Model Examination" selected>Model Examination</option>
+                {% else %}
+                <option value="Model Examination">Model Examination</option>
+                {% endif %}
+            </select>
+            </div>
+            <div class="opt2">
+                <select name="subject">
+                    {% for subject in subjects %}
+                    {% if subject==selectedSubject %}
+                    <option value="{{subject}}" selected>{{subject}}</option>
+                    {% else %}
+                    <option value="{{subject}}">{{subject}}</option>
+                    {% endif %}
+                    {% endfor %}
+                     </select>
+                </div>
+                <input id="custom-button" type="submit" value="Show" name="clicked" class="button">
+            </div>
+        </form>
+            <br>
+            {% if students!=[] %}
+            <table class="center">
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Maximum Mark</th>
+                        <th class="missed-col">Marks Obtained
+
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if marks=="nil" %}
+                    
+                    <form action="/getInternalMarks" method="post" name="internalMarksForm">
+                        {% for student in students %}
+                    <tr class="student">
+                        <td class="name-col">{{student}}</td>
+                        <td class="max-col">100</td>
+                        <td class="missed-col"><input type="number" name="{{student}}"></td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    {% if (students|length)==0%}
+                    {% for i in range(students|length) %}
+
+                    <tr class="student">
+                        <td class="name-col">{{students[i]}}</td>
+                        <td class="max-col">100</td>
+                        <td class="missed-col"><input type="number"></td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    {% for i in range(students|length) %}
+                    <tr class="student">
+                        <td class="name-col">{{students[i]}}</td>
+                        <td class="max-col">100</td>
+                        <td class="missed-col">{{marks[i]}}</td>
+                    </tr>
+                    {% endfor %}
+                    {% endif %}
+
+                    {% endif %}
+                    </tbody>
+                    </table>
+                    <br>
+                    <center>
+                    <input type="submit" value="Save" name="clicked" class="button">
+                </center>
+                    <div class="opt">
+                        <div class="opt1">
+                        {% set yrToCls = ({"2nd Year A":"A2","3rd Year A": "A3","4th Year A":"A4", "2nd Year B":"B2"})	%}
+                        <center>
+                            <a class="down" href="static/internalMark/{{yrToCls[selectedClass]}}/{{selectedSubject}}.xlsx"  target="_blank">Download Excel</a>
+                            </center>           
+                            <form action="/uploadInternalMarks" method="post" enctype="multipart/form-data">
+                                <input type="file" name="internalMarksFile" id="internalMarksFileInput">
+                                <input class="button" type="submit" name="clicked" value="Upload">
+                            </form>          </div>
+                    </div>
+                </div>
+                </form>
+                    {% endif %}
+
+                    
+    </section>
+<script>
+    // Handle Upload button click
+    $('.button[name="clicked"]').on('click', function(event) {
+        if ($(this).val() === "Upload") {
+            $('#internalMarksFileInput').prop('required', true);
+        } else {
+            $('#internalMarksFileInput').prop('required', false);
+        }
+    });
+    // Handle form submission to remove required attribute if not uploading
+    $('form[action="/uploadInternalMarks"]').on('submit', function() {
+        if ($(this).find('.button[name="clicked"]').val() !== "Upload") {
+            $('#internalMarksFileInput').prop('required', false);
+        }
+    });
+
+
+</script>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

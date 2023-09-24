@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAK PORTAL</title>
+</head>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap");
+:root {
+  --color-white-100: hsl(206, 5%, 100%);
+  --color-white-200: hsl(206, 5%, 90%);
+  --color-white-300: hsl(206, 5%, 80%);
+  --color-white-400: hsl(206, 5%, 65%);
+  --color-white-500: hsl(206, 5%, 50%);
+  --color-black-100: hsl(213, 20%, 10%);
+  --color-black-200: hsl(213, 23%, 8%);
+  --color-black-300: hsl(214, 21%, 6%);
+  --color-black-400: hsl(210, 21%, 6%);
+  --color-black-500: hsl(216, 22%, 4%);
+  --color-black-600: hsl(220, 18%, 3%);
+  --color-black-700: hsl(220, 27%, 2%);
+  --color-black-800: hsl(180, 20%, 1%);
+  --color-blue-100: hsl(214, 95%, 93%);
+  --color-blue-200: hsl(213, 97%, 87%);
+  --color-blue-300: hsl(212, 96%, 78%);
+  --color-blue-400: hsl(213, 94%, 68%);
+  --color-blue-500: hsl(217, 91%, 60%);
+  --color-blue-600: hsl(221, 83%, 53%);
+  --color-blue-700: hsl(224, 76%, 48%);
+  --color-blue-800: hsl(226, 71%, 40%);
+  --color-blue-900: hsl(224, 64%, 33%);
+  --shadow-small: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+     0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+     0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+     0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style: none;
+  list-style-type: none;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  font-size: 100%;
+  box-sizing: inherit;
+  scroll-behavior: smooth;
+  height: -webkit-fill-available;
+
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  font-weight: 400;
+  line-height: 1.5;
+  height: -webkit-fill-available;
+  color: var(--color-white-100);
+
+}
+
+#errorsmessage1{
+  margin-top: 30px;
+    display:none;
+    background-color: rgb(19, 49, 83);
+    text-align: center;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 12px;
+}
+
+#myVideo {
+  position: fixed;
+  background:url("/static/Images/background.png")no-repeat center/ cover;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    -webkit-filter: blur(1.5px); /* Safari 6.0 - 9.0 */
+filter: blur(1.5px);
+  }
+
+a,
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  user-select: none;
+  background: none;
+  box-shadow: none;
+  text-decoration: none;
+}
+
+
+.section {
+  margin: 0 auto;
+}
+
+.container {
+  max-width: 75rem;
+  height: auto;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.centered {
+  text-align: center;
+  vertical-align: middle;
+  margin-bottom: 1rem;
+}
+
+.heading-xl {
+  font-family: inherit;
+  font-size: clamp(2.648rem, 6vw, 4.241rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -1px;
+}
+.heading-lg {
+  font-family: inherit;
+  font-size: clamp(2.179rem, 5vw, 3.176rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -1px;
+}
+.heading-md {
+  font-family: inherit;
+  font-size: clamp(1.794rem, 4vw, 2.379rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -1px;
+}
+.heading-sm {
+  font-family: inherit;
+  font-size: clamp(1.476rem, 3vw, 1.782rem);
+  font-weight: 600;
+  line-height: 1.5;
+}
+.heading-xs {
+  font-family: inherit;
+  font-size: clamp(1.215rem, 2vw, 1.335rem);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.paragraph {
+  font-family: inherit;
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  text-wrap: balance;
+  color: var(--color-white-200);
+}
+
+.btn {
+  display: inline-block;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  user-select: none;
+  outline: none;
+  border: none;
+  border-radius: 0.25rem;
+  text-transform: unset;
+  transition: all 0.3s ease-in-out;
+}
+.btn-inline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.5rem;
+}
+.btn-darken {
+  padding: 0.75rem 2rem;
+  color: var(--color-white-100);
+  background-color: var(--color-black-200);
+  box-shadow: var(--shadow-medium);
+}
+.btn-neutral {
+  padding: 0.75rem 2rem;
+  color: var(--color-black-500);
+  background-color: var(--color-white-100);
+  box-shadow: var(--shadow-medium);
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  transition: all 0.35s ease;
+}
+.header.on-scroll {
+  background: var(--color-black-300);
+  box-shadow: var(--shadow-medium);
+  height: 6.3rem;
+
+
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 1.25rem;
+  width: 100%;
+  height: 4.25rem;
+  margin: 0 auto;
+}
+
+.brand {
+    display: flex;
+    flex-direction: row;
+  font-family: inherit;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: -1px;
+  color: var(--color-white-100);
+  text-transform: uppercase;
+  margin-top: 40px;
+}
+.brand img{
+  top: 10px;
+}
+
+.menu {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: auto;
+  padding: 4rem 0 3rem;
+  overflow: hidden;
+  background-color: var(--color-black-300);
+  box-shadow: var(--shadow-medium);
+  transition: all 0.4s ease-in-out;
+}
+.menu.is-active {
+  top: 100px;
+  width: 100%;
+  height: auto;
+}
+.menu-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 1.25rem;
+}
+.menu-link {
+  margin-top: 30px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--color-white-100);
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+.menu-block {
+  margin-top: 30px;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25;
+  user-select: none;
+  white-space: nowrap;
+  text-align: center;
+  margin-left: auto;
+  padding: 0.65rem 1.5rem;
+  border-radius: 3rem;
+  text-transform: capitalize;
+  color: var(--color-white);
+  background-color: var(--color-blue-600);
+  box-shadow: var(--shadow-medium);
+  transition: all 0.3s ease-in-out;
+}
+@media only screen and (min-width: 48rem) {
+  .menu {
+    position: relative;
+    top: 0;
+    width: auto;
+    height: auto;
+    padding: 0rem;
+    margin-left: auto;
+    background: none;
+    box-shadow: none;
+  }
+  .menu-inner {
+    top: 30px;
+    display: flex;
+    flex-direction: row;
+    column-gap: 2rem;
+    margin: 0 auto;
+  }
+  .menu-link {
+    text-transform: capitalize;
+  }
+  .menu-block {
+    margin-left: 2rem;
+  }
+}
+
+.burger {
+  top: 20px;
+  position: relative;
+  display: block;
+  cursor: pointer;
+  user-select: none;
+  order: -1;
+  z-index: 10;
+  width: 1.6rem;
+  height: 1.15rem;
+  border: none;
+  outline: none;
+  background: none;
+  visibility: visible;
+  transform: rotate(0deg);
+  transition: 0.35s ease;
+}
+@media only screen and (min-width: 48rem) {
+  .burger {
+    display: none;
+    visibility: hidden;
+  }
+}
+.burger-line {
+  position: absolute;
+  display: block;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border: none;
+  outline: none;
+  opacity: 1;
+  border-radius: 1rem;
+  transform: rotate(0deg);
+  background-color: var(--color-white-100);
+  transition: 0.25s ease-in-out;
+}
+.burger-line:nth-child(1) {
+  top: 0px;
+}
+.burger-line:nth-child(2) {
+  top: 0.5rem;
+  width: 70%;
+}
+.burger-line:nth-child(3) {
+  top: 1rem;
+}
+.burger.is-active .burger-line:nth-child(1) {
+  top: 0.5rem;
+  transform: rotate(135deg);
+}
+.burger.is-active .burger-line:nth-child(2) {
+  opacity: 0;
+  visibility: hidden;
+}
+.burger.is-active .burger-line:nth-child(3) {
+  top: 0.5rem;
+  transform: rotate(-135deg);
+}
+@media(max-width:819px)
+{
+  main{
+    flex-direction: column;
+  }
+}
+main{
+  margin-top:50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    gap: 50px;
+}
+.mainn{
+    position: relative;
+    top: 100px;
+	width: 450px;
+	height: 500px;
+	background: red;
+	overflow: hidden;
+	background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
+	border-radius: 10px;
+	box-shadow: 5px 20px 50px #0025b7;
+	bottom: 100px;
+}
+.announ{
+  position: relative;
+  margin-top: 100px;
+  width: 450px;
+	height: 400px;
+}
+.announ h5{
+    font-size: 30px;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    justify-content: flex-start;
+    margin-top: 40px;
+}
+marquee{
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    justify-content: flex-start;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+marquee h3{
+    font-size: 20px;
+    font-weight: 600;
+    text-align: justify;
+    justify-content: flex-start;
+    margin-top: 40px;
+}
+#chk{
+	display: none;
+}
+.signup{
+	position: relative;
+	width:100%;
+	height: 100%;
+}
+label{
+	color: #fff;
+	font-size: 2em;
+	justify-content: center;
+	display: flex;
+	margin: 50px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: .5s ease-in-out;
+}
+.first{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.left{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+input{
+	width: 60%;
+	height: 50px;
+	background: #e0dede;
+    font-size: 1em;
+    font-weight: bold;
+    color: #0b3cc1;
+	justify-content: center;
+	display: flex;
+	margin: 20px auto;
+	padding: 10px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+}
+input[type="checkbox"]
+{
+	width: 5%;
+	background: #e0dede;
+    font-weight: bold;
+    color: #513289;
+	border-radius: 5px;
+}
+button{
+	width: 60%;
+	height: 40px;
+	margin: 10px auto;
+	justify-content: center;
+	display: block;
+	color: #fff;
+	background: #0b3cc1;
+	font-size: 1em;
+	font-weight: bold;
+	margin-top: 20px;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	transition: .2s ease-in;
+	cursor: pointer;
+}
+button:hover{
+	background: #235eff;
+}
+.login{
+	height: 460px;
+	background: #eee;
+	border-radius: 60% / 10%;
+	transform: translateY(-180px);
+	transition: .8s ease-in-out;
+}
+.login label{
+	color: #0b3cc1;
+	transform: scale(.6);
+}
+
+#chk:checked ~ .login{
+	transform: translateY(-500px);
+}
+#chk:checked ~ .login label{
+	transform: scale(1);
+}
+#chk:checked ~ .signup label{
+	transform: scale(.6);
+}
+
+footer{
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+
+
+}
+.abtdept{
+  position: relative;
+  top: 150px;
+}
+.abtdept h1{
+  position: relative;
+  display: flex;
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+.deptlogo{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 120px;
+}
+.deptinfo{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 250px;
+  gap: 20px;
+  width: 70%;
+  text-align: justify;
+}
+.deptinfo h3{
+  font-size: 20px;
+  font-weight: 600;
+  text-align: justify;
+  justify-content: flex-start;
+  margin-top: 40px;
+}
+a{
+  text-decoration: none;
+  color: #fff;
+}
+select{
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #0b3cc1;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0e2157;
+}
+.footer {
+  position: relative;
+  background: transparent;
+  min-height: 100px;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top:8%;
+}
+.footer p {
+  color: #fff;
+  margin: 15px 0 10px 0;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+@media (max-width: 768px) {
+  .footer {
+    padding: 20px 20px;
+  }
+  .footer p{
+    font-size: 1rem;
+  }
+
+}
+@media (max-width: 576px) {
+  .footer {
+    padding: 20px 10px;
+  }
+  marquee{
+    width: 100%;
+    height: 70%;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+marquee h3{
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    justify-content: center;
+}
+}
+@media (max-width: 400px) {
+  .footer {
+    padding: 20px 5px;
+  }
+}
+@media (max-width: 490px) {
+  .mainn{
+    width: 350px;
+    height: 500px;
+  }
+  .announ{
+    width: 350px;
+    height: 300px;
+  }
+  .announ h5{
+    font-size: 20px;
+    text-align: center;
+  }
+}
+</style>
+<body>
+
+  <video autoplay muted loop id="myVideo">
+    <source src="/static/Images/video.mp4" type="video/mp4">
+  </video>
+<header class="header" id="header">
+  {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                        <center>
+                            <p id="errormessage1">{{message}}</p>
+                          </center>
+                        {% endfor %}
+                    {% endif %}
+  {% endwith %}
+    <nav class="navbar container">
+       <a href="#" class="brand"><img src="/static/Images/JAK.png" width="100"></a>
+       <div class="menu" id="menu">
+       </div>
+       <a class="menu-block" href="/static/Images/Calendar.xls" target="_blank" >Academic Calendar</a>
+    </nav>
+ </header>
+
+ <main class="main">
+            <div class="mainn">
+
+                <input type="checkbox" id="chk" aria-hidden="true">
+
+                    <div class="signup">
+                        <form action="/studentLogin" method="post">
+                            <label for="chk" aria-hidden="true">Student Login</label>
+                            <input type="text" name="userID" placeholder="Register Number" required="">
+                            <input type="password" name="password" placeholder="Password" id="myInput">
+                            <button type="submit" name="clicked" value="Login">Login</button>
+                        </form>
+                    </div>
+
+                    <div class="login">
+                        <form action="/staffLogin" method="post">
+                            <label for="chk" aria-hidden="true"> Staff Login</label>
+                            <input type="text" name="userID" placeholder="User ID" required="">
+                            <input type="password" name="password" placeholder="Password" required="">
+                            <button type="submit" name="clicked" value="Login">Login</button>
+                        </form>
+                    </div>
+                    </div>
+    </section>
+    <div class="announ" id="announ">
+      <h5>ANNOUNCEMENTS</h5>
+        <marquee behavior="scroll" direction="up" id="marquee-element">
+        <center>
+{% for announcement in announcements %}
+  <h3>{{announcement}}</h3>
+{% endfor %}
+</center>
+</marquee>
+
+</div>
+ </main>
+</body>
+<footer class="footer" >
+	<p style="opacity: 0.75;">Made with 🤍 by Team <strong>JAK</strong></p>
+
+</footer>
+<script>
+  document.addEventListener("DOMContentLoaded",function(){
+                    var value = document.getElementById("errormessage1");
+                    value.style.display = "block";
+
+                    setTimeout(function(){
+                    value.style.display = "none";
+                    },3000);
+            });
+    const navbarMenu = document.getElementById("menu");
+const burgerMenu = document.getElementById("burger");
+const headerMenu = document.getElementById("header");
+
+if (burgerMenu && navbarMenu) {
+   burgerMenu.addEventListener("click", () => {
+      burgerMenu.classList.toggle("is-active");
+      navbarMenu.classList.toggle("is-active");
+   });
+}
+document.querySelectorAll(".menu-link").forEach((link) => {
+   link.addEventListener("click", () => {
+      burgerMenu.classList.remove("is-active");
+      navbarMenu.classList.remove("is-active");
+   });
+});
+window.addEventListener("scroll", () => {
+   if (this.scrollY >= 85) {
+      headerMenu.classList.add("on-scroll");
+   } else {
+      headerMenu.classList.remove("on-scroll");
+   }
+});
+
+window.addEventListener("resize", () => {
+   if (window.innerWidth > 768) {
+      if (navbarMenu.classList.contains("is-active")) {
+         navbarMenu.classList.remove("is-active");
+      }
+   }
+});
+
+    const marqueeElement = document.getElementById('marquee-element');
+
+    // Pause the marquee on mouse enter
+    marqueeElement.addEventListener('mouseenter', function () {
+        this.stop();
+    });
+
+    // Resume the marquee on mouse leave
+    marqueeElement.addEventListener('mouseleave', function () {
+        this.start();
+    });
+</script>
+</html>

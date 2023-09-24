@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table.center {
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%; /* Make sure the table takes up full width */
+        }
+
+        th, td {
+            padding: 1em 1em;
+            text-align: center;
+        }
+
+        th {
+            background-color: #0b3cc1;
+            color: #fff;
+        }
+
+        td {
+            border-top: 1px solid var(--panel-color);
+            color: var(--text-color);
+            background-color: var(--table-color);
+        }
+
+        th.missed-col {
+            background-color: #3bbc4a;
+        }
+
+        td.missed-col {
+            background-color: #ecfff4;
+            color: rgb(4, 255, 0);
+        }
+
+        /* Apply different styles for smaller screens */
+        @media only screen and (max-width: 600px) {
+            th, td {
+                padding: 0.5em 0.5em;
+            }
+            td.name-col {
+                font-weight: bold;
+            }
+        }
+    </style>
+</head>
+<body>
+    <table class="center">
+        <thead>
+            <tr>
+                <th>Reg No</th>
+                <th>Name</th>
+                {% for subject in subjects %}
+                <th>{{subject}}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in studentMark %}
+            <tr class="student">
+                <td class="name-col">{{student[0]}}</td>
+                <td class="name-col">{{student[1]}}</td>
+                {% for i in range (student[3:]|length) %}
+                <td class="name-col">{{student[3:][i]}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

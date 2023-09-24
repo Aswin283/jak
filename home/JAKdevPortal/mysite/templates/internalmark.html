@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+    <title>JAK PORTAL</title> 
+    <script type="text/javascript">
+        function preventBack(){window.history.forward()};
+        setTimeout("preventBack()", 0);
+        window.onunload=function(){null;}
+    </script>
+
+</head>
+<style>
+  .avatar-upload {
+    position: relative;
+    max-width: 205px;
+    margin: 50px auto;
+  }
+  .avatar-upload .avatar-edit {
+    position: absolute;
+    right: 12px;
+    z-index: 1;
+    top: 10px;
+  }
+  .avatar-upload .avatar-edit input {
+    display: none;
+  }
+
+  .avatar-upload .avatar-preview {
+    width: 200px;
+    height: 250px;
+    position: relative;
+    border-radius: 100%;
+    border: 6px solid #F8F8F8;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+  }
+  .avatar-upload .avatar-preview > div {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+.opt{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.opt1{
+  justify-content: space-between;
+  align-items: center;
+}
+table.center {
+            margin-left: auto;
+            margin-right: auto;
+            width: 70%; /* Make sure the table takes up full width */
+        }
+
+        th, td {
+            padding: 1em 1em;
+            text-align: center;
+        }
+
+        th {
+            background-color: #0b3cc1;
+            color: #fff;
+        }
+
+        td {
+            border-top: 1px solid var(--panel-color);
+            color: var(--text-color);
+            background-color: var(--table-color);
+        }
+
+        th.missed-col {
+            background-color: #3bbc4a;
+        }
+
+        td.missed-col {
+            background-color:var(--mark-color);
+            color: rgb(4, 255, 0);
+        }
+        td.fail{
+            background-color:var(--fail-color);
+            color: rgb(255, 0, 0);
+        }
+
+        /* Apply different styles for smaller screens */
+        @media only screen and (max-width: 600px) {
+            th, td {
+                padding: 0.5em 0.5em;
+            }
+            td.name-col {
+                font-weight: bold;
+            }
+        }
+@media(max-width:550px)
+{
+    .opt{
+        flex-direction: column;
+    }
+}
+.button {
+  padding: 10px;
+  color: white;
+  background-color: #0b3cc1;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+</style>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="/static/Images/logo.png" alt="">
+            </div>
+
+            <span class="logo_name"></span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="{{url_for('profile')}}">
+                    <i class="uil uil-estate"></i>
+                    <span class="link-name">Profile</span>
+                </a></li>
+                <li><a href="{{url_for('digitalMaterial')}}">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="link-name">Digital Materials</span>
+                </a></li>
+                <li><a href="{{url_for('internalMark')}}">
+                    <i class="uil uil-chart"></i>
+                    <span class="link-name">Internal Marks</span>
+                </a></li>
+                <li><a href="{{url_for('leaveApplication')}}">
+                    <i class="uil uil-comments"></i>
+                    <span class="link-name">Leave Letter</span>
+                </a></li>
+
+                <li><a href="{{url_for('certifications')}}">
+                    <i class='bx bx-book-content'></i>
+                    <span class="link-name">Certifications</span>
+                </a></li>
+                <li><a href="{{url_for('projects')}}">
+                    <i class='bx bx-layer'></i>
+                    <span class="link-name">Projects</span>
+                </a></li>
+                </a></li>
+                <li><a href="{{url_for('prizes')}}">
+                    <i class='bx bx-medal' ></i>
+                    <span class="link-name">Prizes</span>
+                </a></li>
+                <li><a href="{{url_for('internships')}}">
+                    <i class='bx bx-medal' ></i>
+                    <span class="link-name">Internships</span>
+                </a></li>
+                <li><a href="{{url_for('staffs')}}">
+                    <i class='bx bx-male-female'></i>
+                    <span class="link-name">Staff Details</span>
+                </a></li>
+                <li><a href="{{url_for('settings')}}">
+                    <i class='bx bx-customize'></i>
+                    <span class="link-name">Settings</span>
+                </a></li>
+
+                <li><a href="{{url_for('index')}}">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Logout</span>
+                </a></li>
+
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                        <div class="mode-toggle">
+                            <span class="switch"></span>
+                          </div>
+                </a>
+
+
+            </li>
+            </ul>
+        </div>
+    </nav>
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+
+            <div class="name">
+                JAK PORTAL
+                <div class="subname">
+                    An AIML Department ERP Portal
+                </div> 
+            </div>
+            <img id="image" src="/static/Images/logomain.png" alt="">
+        </div>
+
+        <div class="dash-content">
+            <div class="overview">
+                <div class="title">
+                    <i class="uil uil-chart"></i>
+                    <span class="text">Internal Marks</span>
+                </div>
+            </div>
+            <table class="center">
+                <thead>
+            <div class="opt">
+                <div class="opt1">
+                    <form action="/studentInternalMark" method="post">
+            <select name="test">
+                {% if selected=="Internal Assessment I" %}
+                <option value="Internal Assessment I" selected>Internal Assessment I</option>
+                {% else %}
+                <option value="Internal Assessment I">Internal Assessment I</option>
+                {% endif %}
+                {% if selected=="Internal Assessment II" %}
+                <option value="Internal Assessment II" selected>Internal Assessment II</option>
+                {% else %}
+                <option value="Internal Assessment II">Internal Assessment II</option>
+                {% endif %}
+                {% if selected=="Model Examination" %}
+                <option value="Model Examination" selected>Model Examination</option>
+                {% else %}
+                <option value="Model Examination">Model Examination</option>
+                {% endif %}
+
+              </select>
+            </div>
+              <div class="opt2">
+              <input type="submit" name="clicked" value="Show" class="button">
+            </div>
+            </form>
+            </div>
+            <br>
+                    <tr>
+                        <th>Subjects</th>
+                        <th class="missed-col">Marks</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in range (subjects|length) %}
+                    <tr class="student">
+                        <td class="name-col">{{subjects[i]}}</td>
+                        {% if marks[i]|int>=50 %}
+                        <td class="missed-col">{{marks[i]}}</td>
+                        {% else %}
+                        <td class="fail">{{marks[i]}}</td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+                    </table>
+                    
+    </section>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

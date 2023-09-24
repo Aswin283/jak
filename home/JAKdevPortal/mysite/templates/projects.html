@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+    <title>JAK PORTAL</title>
+    <script type="text/javascript">
+        function preventBack(){window.history.forward()};
+        setTimeout("preventBack()", 0);
+        window.onunload=function(){null;}
+    </script>
+
+</head>
+<style>
+  .avatar-upload {
+    position: relative;
+    max-width: 205px;
+    margin: 50px auto;
+  }
+  .avatar-upload .avatar-edit {
+    position: absolute;
+    right: 12px;
+    z-index: 1;
+    top: 10px;
+  }
+  .avatar-upload .avatar-edit input {
+    display: none;
+  }
+
+  .avatar-upload .avatar-preview {
+    width: 200px;
+    height: 250px;
+    position: relative;
+    border-radius: 100%;
+    border: 6px solid #F8F8F8;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+  }
+  .avatar-upload .avatar-preview > div {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  select{
+  height: 45px;
+  width: 220px;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.9s ease;
+  color:#222327;
+  background-color: white;
+  cursor: pointer;
+}
+
+.opt{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.opt1{
+  justify-content: space-between;
+  align-items: center;
+}
+table.center {
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%; /* Make sure the table takes up full width */
+        }
+
+        th, td {
+            padding: 1em 1em;
+            text-align: center;
+        }
+
+        th {
+            background-color: #0b3cc1;
+            color: #fff;
+        }
+
+        td {
+            border-top: 1px solid var(--panel-color);
+            color: var(--text-color);
+            background-color: var(--table-color);
+        }
+
+        th.missed-col {
+            background-color: #3bbc4a;
+        }
+
+        td.missed-col {
+            background-color: #ecfff4;
+            color: rgb(4, 255, 0);
+        }
+
+        /* Apply different styles for smaller screens */
+        @media only screen and (max-width: 600px) {
+            th, td {
+                padding: 0.5em 0.5em;
+                font-size: 0.6em;
+            }
+            td.name-col {
+                font-weight: bold;
+            }
+            input[type="name"]{
+                font-size: 0.8em;
+            }
+            input[type="file"]{
+                font-size: 0.8em;
+            }
+        }
+@media(max-width:550px)
+{
+    .opt{
+        flex-direction: column;
+    }
+}
+input[type="name"]{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 6px 0;
+    margin: 10px 0;
+    font-size: 1.1em;
+    border: none;
+    border-bottom: 1px solid #333;
+    color:var(--text-color);
+    outline: none;
+    background: transparent;
+    resize: none;
+    transition: 0.5s;
+  }
+
+  #custom-button {
+  padding: 10px;
+  color: white;
+  background-color: #0b3cc1;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#custom-button:hover {
+  background-color: #0b3cc1;
+}
+
+#custom-text {
+  margin-left: 10px;
+  font-family: sans-serif;
+  color: #aaa;
+}
+td a{
+    color: #0b3cc1;
+    font-weight: 700;
+    text-decoration: none;
+}
+#successmessage1{
+    margin-top: 30px;
+    display:none;
+    background-color: rgb(19, 49, 83);
+    text-align: center;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 12px;
+}
+</style>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="/static/Images/logo.png" alt="">
+            </div>
+
+            <span class="logo_name"></span>
+        </div>
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="{{url_for('profile')}}">
+                    <i class="uil uil-estate"></i>
+                    <span class="link-name">Profile</span>
+                </a></li>
+                <li><a href="{{url_for('digitalMaterial')}}">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="link-name">Digital Materials</span>
+                </a></li>
+                <li><a href="{{url_for('internalMark')}}">
+                    <i class="uil uil-chart"></i>
+                    <span class="link-name">Internal Marks</span>
+                </a></li>
+                <li><a href="{{url_for('leaveApplication')}}">
+                    <i class="uil uil-comments"></i>
+                    <span class="link-name">Leave Letter</span>
+                </a></li>
+                <li><a href="{{url_for('certifications')}}">
+                    <i class='bx bx-book-content'></i>
+                    <span class="link-name">Certifications</span>
+                </a></li>
+                <li><a href="{{url_for('projects')}}">
+                    <i class='bx bx-layer'></i>
+                    <span class="link-name">Projects</span>
+                </a></li>
+                </a></li>
+                <li><a href="{{url_for('prizes')}}">
+                    <i class='bx bx-medal' ></i>
+                    <span class="link-name">Prizes</span>
+                </a></li>
+                <li><a href="{{url_for('internships')}}">
+                    <i class='bx bx-medal' ></i>
+                    <span class="link-name">Internships</span>
+                </a></li>
+                <li><a href="{{url_for('staffs')}}">
+                    <i class='bx bx-male-female'></i>
+                    <span class="link-name">Staff Details</span>
+                </a></li>
+
+                <li><a href="{{url_for('settings')}}">
+                    <i class='bx bx-customize'></i>
+                    <span class="link-name">Settings</span>
+                </a></li>
+
+                <li><a href="{{url_for('index')}}">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Logout</span>
+                </a></li>
+
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                        <div class="mode-toggle">
+                            <span class="switch"></span>
+                          </div>
+                </a>
+
+
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+
+            <div class="name">
+                JAK PORTAL
+                <div class="subname">
+                    An AIML Department ERP Portal
+                </div>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p id="successmessage1">{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <img id="image" src="/static/Images/logomain.png" alt="">
+        </div>
+
+        <div class="dash-content">
+            {% if projects!=[] %}
+            <div class="overview">
+                <div class="title">
+                    <i class='bx bx-layer'></i>
+                    <span class="text">Projects</span>
+                </div>
+            </div>
+            <table class="center">
+                <thead>
+                    <tr>
+                        <th>Project Name</th>
+                        <th>Project File</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for project in projects %}
+                    <tr class="student">
+                        <td class="name-col">{{project[0]}}</td>
+                        <td class="name-col"><a href="{{location[25:]}}{{project[0]}}.{{project[1]}}" target="_blank">Project Report</a></td>
+                        <td class="name-col"><a href="/deleteProject/{{location[:-1]|replace('/',',')}}/{{project[0]}}.{{project[1]}}">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+        </div>
+                    <div class="title">
+                        <i class='bx bx-add-to-queue'></i>
+                        <span class="text">Add Projects</span>
+                    </div>
+                    <form action="/addProject" method="post" enctype="multipart/form-data">
+
+                    <table class="center">
+                        <thead>
+                            <tr>
+                                <th>Project Name</th>
+                                <th>Project</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr class="student">
+                                <td class="name-col"><input type="name" name="projectName" placeholder="Project Name"></td>
+                                <td class="name-col"><span id="custom-text">  <input type="file" id="file" name="projectFile" />
+
+
+                            </tr>
+                            </tbody>
+                            </table>
+                            <center>
+                                <input id="custom-button" type="submit" name="clicked" value="Add">
+                            </center>
+                        </form>
+    </section>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded",function(){
+                    var value = document.getElementById("successmessage1");
+                    value.style.display = "block";
+
+                    setTimeout(function(){
+                    value.style.display = "none";
+                    },3000);
+            });
+        const realFileBtn = document.getElementById("real-file");
+        const customBtn = document.getElementById("custom-button");
+        const customTxt = document.getElementById("custom-text");
+
+        customBtn.addEventListener("click", function() {
+        realFileBtn.click();
+        });
+
+        realFileBtn.addEventListener("change", function() {
+        if (realFileBtn.value) {
+            customTxt.innerHTML = realFileBtn.value.match(
+            /[\/\\]([\w\d\s\.\-\(\)]+)$/
+            )[1];
+        } else {
+            customTxt.innerHTML = "No file chosen, yet.";
+        }
+        });
+
+    </script>
+</body>
+</html>

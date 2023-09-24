@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>JAK PORTAL</title> 
+    <script type="text/javascript">
+        function preventBack(){window.history.forward()};
+        setTimeout("preventBack()", 0);
+        window.onunload=function(){null;}
+    </script>
+
+</head>
+<style>
+table {
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 20px;
+}
+th {
+    background-color: #0b3cc1;
+    color: #fff;
+    max-width: 1000px;
+}
+
+td {
+    border-top: 1px solid #eee;
+    padding: 2em 1em;
+    font-size: 16px;
+}
+.name-col {
+    text-align: left;
+}
+
+  .avatar-upload {
+    position: relative;
+    max-width: 205px;
+    margin: 50px auto;
+  }
+  .avatar-upload .avatar-edit {
+    position: absolute;
+    right: 12px;
+    z-index: 1;
+    top: 10px;
+  }
+  .avatar-upload .avatar-edit input {
+    display: none;
+  }
+
+  .avatar-upload .avatar-preview {
+    width: 200px;
+    height: 250px;
+    position: relative;
+    border-radius: 100%;
+    border: 6px solid #F8F8F8;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+  }
+  .avatar-upload .avatar-preview > div {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+</style>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="/static/Images/logo.png" alt="">
+            </div>
+
+            <span class="logo_name"></span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="{{url_for('staffProfile')}}">
+                    <i class="uil uil-estate"></i>
+                    <span class="link-name">Profile</span>
+                </a>
+                <span class="tooltip">Profile</span></li>
+                <li><a href="{{url_for('staffMaterials')}}">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="link-name">Digital Materials</span>
+                </a></li>
+                <li><a href="{{url_for('staffInternalMarks')}}">
+                    <i class="uil uil-chart"></i>
+                    <span class="link-name">Internal Marks</span>
+                </a></li>
+                <li><a href="{{url_for('announcements')}}">
+                    <i class='bx bx-alarm-exclamation'></i>
+                    <span class="link-name">Post Announcements</span>
+                </a></li>
+
+                {% if session['data'][-1]=='yes' %}
+
+                <li><a href="{{url_for('staffAttendance')}}">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span class="link-name">Attendance</span>
+                </a></li>
+                <li><a href="{{url_for('staffLeaveLetters')}}">
+                    <i class="uil uil-comments"></i>
+                    <span class="link-name">Leave Requests</span>
+                </a></li>
+                <li><a href="{{url_for('leaveHistory')}}">
+                    <i class='bx bxs-book-content'></i>
+                    <span class="link-name">Leave History</span>
+                </a></li>
+
+                <li><a href="{{url_for('papers')}}">
+                    <i class='bx bx-copy-alt'></i>
+                    <span class="link-name">Papers</span>
+                </a></li>
+
+                <li><a href="{{url_for('searchStudent')}}">
+                    <i class='bx bx-street-view'></i>
+                    <span class="link-name">Search Student</span>
+                </a></li>
+                {% endif %}
+
+                <li><a href="{{url_for('staffSettings')}}">
+                    <i class='bx bx-customize'></i>
+                    <span class="link-name">Settings</span>
+                </a></li>
+                <li><a href="{{url_for('index')}}">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Logout</span>
+                </a></li>
+                </ul>
+
+                <li class="mode">
+                    <a href="#">
+                        <div class="mode-toggle">
+                            <i class='bx bxs-sun'></i>
+                            <span class="switch"></span>
+                          </div>
+                </a>
+
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+
+            <div class="name">
+                JAK PORTAL
+                <div class="subname">
+                    An AIML Department ERP Portal
+                </div> 
+            </div>
+            <img id="image" src="/static/Images/logomain.png" alt="">
+        </div>
+
+        <div class="dash-content">
+            <div class="overview">
+                <div class="title">
+                    <i class="uil uil-estate"></i>
+                    <span class="text">Profile</span>
+                </div>
+                    <div class="avatar-upload">
+                        <div class="avatar-preview">
+                            {% set name = session['profile']%}
+                            <div id="imagePreview" style="background-image: url(/static/profiles/STAFFS/{{name}});">
+                            </div>
+                        </div>
+
+                </div>
+                </div>
+                <div class="studentname">{{data[2]}}</div>
+                <br>
+                <div class="boxes">
+                    <div class="box box1">
+                        <span class="text">Qualification</span>
+                        <span class="number">{{data[3]}}</span>
+                    </div>
+                    <div class="box box2">
+                        <span class="text">Designation</span>
+                        <span class="number">{{data[4]}}</span>
+                    </div>
+                    <div class="box box7">
+                        <span class="text">Subjects Handled</span>
+                        <span class="number">{{data[5][:-1]| replace (",",", ")}}</span>
+                    </div>
+                    <div class="box box5">
+                        <span class="text">Papers Published</span>
+                        <span class="number">{{papersPublished}}</span>
+                    </div>
+                    <div class="box box">
+                        <span class="text">Classes Handling</span>
+                        <span class="number">{{data[9][:-1]| replace (",",", ")}}</span>
+                    </div>
+
+                    <div class="box box5">
+                        <span class="text">Email ID</span>
+                        <span class="number">{{data[8]}}</span>
+                    </div>
+                </div>
+            </div>
+
+    </section>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        // Function to toggle between light and dark mode
+function toggleMode() {
+    const modeIcon = document.getElementById('mode-icon');
+    const body = document.body;
+
+    // Check the current mode by checking a CSS class on the body element
+    if (body.classList.contains('dark-mode')) {
+        // Switch to light mode
+        body.classList.remove('dark-mode');
+        modeIcon.className = 'bx bxs-sun'; // Change the icon to a sun for light mode
+    } else {
+        // Switch to dark mode
+        body.classList.add('dark-mode');
+        modeIcon.className = 'bx bxs-moon'; // Change the icon to a moon for dark mode
+    }
+}
+
+// Attach the toggleMode function to the click event of the mode toggle button
+const modeToggle = document.getElementById('mode-toggle');
+modeToggle.addEventListener('click', toggleMode);
+
+    </script>
+</body>
+</html>
